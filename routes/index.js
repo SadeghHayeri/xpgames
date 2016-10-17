@@ -77,7 +77,6 @@ router.post('/login', function(req, res, next) {
     var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
-        // if(body.success)
         if(true)
         {
             passport.authenticate('local', function(err, user, info) {
@@ -110,46 +109,54 @@ router.get('/forgot', function(req, res,next) {
 
 router.post('/forgot', function(req, res, next) {
     var usr;
-    async.waterfall([
-        function(done) {
-            crypto.randomBytes(24, function(err, buf) {
-                var token = buf.toString('hex');
-                done(err, token);
-            });
-        },
-        function(token, done) {
-            User.findOne({ username: req.body.email}, function(err, user) {
-                if(err) return next(err);
-                if (!user) {
-                    req.flash('error', 'No account with that email address exists.');
-                    return res.redirect('/forgot');
-                }
-                usr = user;
-                user.resetPasswordToken = token;
-                user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-                user.save(function(err) {
-                    var transporter = nodemailer.createTransport('smtps://ahsprim%40gmail.com:@smtp.gmail.com');
-                    var mailOptions = {
-                        from: '"Fred Foo ?" <foo@blurdybloop.com>', // sender address
-                        to: user.email, // list of receivers
-                        subject: 'ACM Register Verification', // Subject line
-                        text: 'سلام. لطفا روی لینک زیر کلیک کن تا گذرواژه ات رو تغییر بدی:)', // plaintext body
-                        html: ejs.render('http://<%=host%>/reset/<%=token%>',{host:req.headers.host,token:token}) // html body
-                    };
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if(error){
-                            return console.log(error);
-                        }
-                        console.log('Message sent: ' + info.response);
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdbUwcUAAAAAMquB_XKPwD5XtUPwhY19iIU8umM' +"&response=" +req.body['g-recaptcha-response'];
+    request(verificationUrl,function(error,response,body) {
+        if (body.success) {
+            async.waterfall([
+                function (done) {
+                    crypto.randomBytes(24, function (err, buf) {
+                        var token = buf.toString('hex');
+                        done(err, token);
                     });
-                    console.log('http://' + req.headers.host + '/reset/' + token);
-                    done(err, token, user);
-                });
+                },
+                function (token, done) {
+                    User.findOne({username: req.body.email}, function (err, user) {
+                        if (err) return next(err);
+                        if (!user) {
+                            req.flash('error', 'No account with that email address exists.');
+                            return res.redirect('/forgot');
+                        }
+                        usr = user;
+                        user.resetPasswordToken = token;
+                        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+                        user.save(function (err) {
+                            var transporter = nodemailer.createTransport('smtps://ahsprim%40gmail.com:@smtp.gmail.com');
+                            var mailOptions = {
+                                from: '"Fred Foo ?" <foo@blurdybloop.com>', // sender address
+                                to: user.email, // list of receivers
+                                subject: 'ACM Register Verification', // Subject line
+                                text: 'سلام. لطفا روی لینک زیر کلیک کن تا گذرواژه ات رو تغییر بدی:)', // plaintext body
+                                html: ejs.render('http://<%=host%>/reset/<%=token%>', {
+                                    host: req.headers.host,
+                                    token: token
+                                }) // html body
+                            };
+                            transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                    return console.log(error);
+                                }
+                                console.log('Message sent: ' + info.response);
+                            });
+                            console.log('http://' + req.headers.host + '/reset/' + token);
+                            done(err, token, user);
+                        });
+                    });
+                },
+            ], function (err) {
+                if (err) return next(err);
+                res.redirect('/');
             });
-        },
-    ], function(err) {
-        if (err) return next(err);
-        res.redirect('/');
+        }
     });
 });
 
