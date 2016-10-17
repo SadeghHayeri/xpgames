@@ -38,14 +38,19 @@ router.post('/register',function(req, res,next) {
         var firstname = sanitize(req.body.firstname);
         var lastname = sanitize(req.body.lastname);
         var studentId = sanitize(req.body.studentId);
+        var studyField = sanitize(req.body.studyField);
         var email = sanitize(req.body.email);
+        if(studyField)
+            studyField = "Computer";
+        else
+            studyField = "Electric";
         if(body.success&&(!(firstname.length==0||lastname.length==0||email.length==0))){
-
                 var user = new User({
                     firstname: firstname,
                     lastname: lastname,
                     username: username,
                     studentId: studentId,
+                    studyField: studyField,
                     email: email,
                     password: password,
                 });

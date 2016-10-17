@@ -23,17 +23,17 @@
 <body>
 <nav class="light-blue accent-3" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="white-text brand-logo">ACM</a>
+        <a id="logo-container" href="#" class="white-text brand-logo">ACM</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
-            <li><a class="white-text  " href="/register" >ثبت نام</a></li>
+            <li><a class="white-text" href="/register">ثبت نام</a></li>
         </ul>
         <%}else{%>
         <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="/home"><%=currentUser.name%></a></li>
+            <li><a href="#"><%=currentUser.name%></a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a class="white-text"href="/logout">خروج</a></li>
+            <li><a href="/logout">خروج</a></li>
         </ul>
         <%}%>
         <ul id="nav-mobile" class="side-nav">
@@ -43,31 +43,31 @@
     </div>
 </nav>
 <div class="row">
-    <form class="col s12" action="/login" method="post">
-        <div class="row">
-            <div class="input-field col s4" >
-                <input name="username" type="text" class="validate">
-                <abel for="username">آدرس ایمیل</abel>
+    <div class="card  dark-blue accent-3" style="width: 500px; position: absolute;top: 15%;left: 32%;">
+        <span class="card-title light-blue-text accent-3" style="position:relative;left:30%;top: 100%"> XP Games   ورود به </span>
+        <form id="formValidate" class="formValidate col s12" action="/register" method="post">
+            <div class="row">
+                <div class="input-field col s12" >
+                    <input name="email" type="email" class="validate">
+                    <label for="email">آدرس ایمیل</label>
+                </div>
             </div>
-            <br><br><br><br>
-            <br><br><br>
-
-            <div class="input-field col s4" style="margin-left: 11%;">
+            <div class="row">
+            <div class="input-field col s12">
                 <input name="password" type="password" class="validate">
-                <label for="password">گذرواژه</label>
+                <label for="password"> گذرواژه</label>
             </div>
-        </div>
-        <button class="btn waves-effect waves-light light-blue accent-3" type="submit" name="action"> ورود :)
-            <i class="material-icons right"></i>
-        </button>
-        <br>
-        <br>
-        <a href="/forgot" style="
-
-    position: relative;
-    margin-left: 50%;"> گذرواژه ات رو فراموش کردی‌؟</a>
-    </form>
+            </div>
+            <div class="row" >
+                <button class="btn light-blue accent-3" type="submit" name="action" style="position:relative;left: 35%;">    ثبت نام
+                    <i class="material-icons right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
+
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>

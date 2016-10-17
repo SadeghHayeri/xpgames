@@ -44,11 +44,13 @@
 <body>
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="light-blue-text accent-3 brand-logo">ACM</a>
+        <a id="logo-container" href="/" style="position: relative;top:5px;" class="light-blue-text accent-3 brand-logo">ACM</a>
         <%if(!currentUser){%>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/register" id="download-button"  data-position="bottom" data-delay="50" data-tooltip="ثبت نام از فردا شروع میشه"
-                   class="btn-large light-blue zccent-3" >ثبت نام</a></li>
+                <li style="height: 40px; ">
+                    <a style="height: 40px; border-top: 10px" href="/register" id="download-button"
+                       data-position="bottom" data-delay="50" data-tooltip="ثبت نام از فردا شروع میشه"
+                   class="btn-large light-blue accent-3" >ثبت نام</a></li>
             </ul>
             <ul class="right hide-on-med-and-down">
                 <li><a class="light-blue-text accent-3" href="/login">ورود</a></li>
@@ -73,7 +75,7 @@
         <div class="container">
             <br><br>
             <h1 class=" header center teal-text text-lighten-2">
-                <span style=" margin-top: 100px" class="light-blue-text accent-3">به XP Games خوش اومدی </span>
+                <span style=" position:absolute;top: 290px;left: 300px" class="light-blue-text accent-3">خوش اومدی XP Games به   </span>
             </h1>
             <div class="row center">
                 <h5 class="header col s12 light"></h5>
@@ -98,11 +100,11 @@
                 <p class="center-align light">
                    جمعه ۲۹ مهر
                     <br>
-آشنایی با ACM
+                    یه روز با کلی برنامه‌های مهیج
                     <br>
-                    مسابقه XP Game
+                    که سال بالایی‌ها برای خوش آمدگویی بهت تدارک دادن
                     <br>
-آشنایی با دانشگاه و صحبت با بچه های سال بالایی
+                    هم می‌تونی با دانشکده و هم با بچه‌ها بیشتر آشنا بشی
                 </p>
                 <div class="row center">
                     <%if(currentUser){if(!currentUser.verified){%>
@@ -135,7 +137,7 @@
 
         </div>
     </div>
-    <div class="parallax"><img src="acmback.png" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="back9.jpg" alt="Unsplashed background img 1"></div>
 </div>
 
 <div class="container">
