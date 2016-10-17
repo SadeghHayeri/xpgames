@@ -38,8 +38,9 @@ router.post('/register',function(req, res,next) {
         var firstname = sanitize(req.body.firstname);
         var lastname = sanitize(req.body.lastname);
         var studentId = sanitize(req.body.studentId);
-        var email = sanitize(req.body.email);;
+        var email = sanitize(req.body.email);
         if(body.success&&(!(firstname.length==0||lastname.length==0||email.length==0))){
+
                 var user = new User({
                     firstname: firstname,
                     lastname: lastname,
@@ -51,6 +52,7 @@ router.post('/register',function(req, res,next) {
                 User.findOne({username: user.username}).exec(function (err, existUser) {
                     if (err) return next(err);
                     if (existUser) {
+                        console.log('Username already exist');
                         req.flash('error', 'Username already exist');
                         res.redirect('/register');
                     } else {
@@ -121,6 +123,7 @@ router.post('/forgot', function(req, res, next) {
                     User.findOne({username: req.body.email}, function (err, user) {
                         if (err) return next(err);
                         if (!user) {
+                            console.log('No account with that email address exists.');
                             req.flash('error', 'No account with that email address exists.');
                             return res.redirect('/forgot');
                         }
@@ -178,6 +181,7 @@ router.post('/reset/:token', function(req, res,next) {
             User.findOne({$and:[{resetPasswordToken: req.params.token},{resetPasswordExpires: { $gt: Date.now() }} ]},
                 function(err, user) {
                     if (!user) {
+                        req.flash('Password reset token is invalid or has expired.');
                         req.flash('error', 'Password reset token is invalid or has expired.');
                         return res.redirect('back');
                     }
@@ -188,6 +192,7 @@ router.post('/reset/:token', function(req, res,next) {
     
                     user.save(function(err) {
                     req.logIn(user, function(err) {
+                        req.flash('Success! Your password has been changed.');
                         req.flash('success', 'Success! Your password has been changed.');
                         done(err, user);
                     });
