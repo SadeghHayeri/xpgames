@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>XP Games</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <style>
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+    </style>
+</head>
+<body>
+<nav class="light-blue accent-3" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">ACM</a>
+        <%if(!currentUser){%>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/register">ثبت نام</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/login">ورود</a></li>
+        </ul>
+        <%}else{%>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/logout">خروج</a></li>
+        </ul>
+        <%}%>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">assignment_ind</i>نام و نام خانوادگی</div>
+        <div class="collapsible-body"><p><%=user.firstname + user.lastname%></p></div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">email</i>ایمیل</div>
+        <div class="collapsible-body"><p><%=user.email%></p></div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">info</i>شماره دانشجویی</div>
+        <div class="collapsible-body"><p><%=user.studentId%></p></div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">code</i>XP</div>
+        <div class="collapsible-body"><%=user.experience%></div>
+    </li>
+</ul>
+
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script>
+    $(document).ready(function(){
+        Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
+        $('.collapsible').collapsible({
+            accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+    });
+</script>
+</body>
+</html>

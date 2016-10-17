@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Responsive Coming soon Template">
+    <meta name="keywords" content="Coming soon template, Bootstrap template, Coming soon, Responsive coming soon Template, Under Construction, countdown , Mailchimp, Youtube Video">
+    <meta name="author" content="traivan98">
+
+    <title>شکار معما</title>
+
+    <!-- favicon linke -->
+    <link rel="icon" type="image/png" href="/firstpage/img/favicon.png" />
+    <!-- ===============    Bootstrap core CSS     =============== -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/admin/problemdetail.css" media="all" />
+</head>
+<body>
+<nav class="navbar navbar-inverse  " style="margin-bottom: 0;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/firstpage/img/logo.png" width="40px"height="40px">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="container probbd">
+        <div class="col-md-3 tag">
+            <form action="/admin/problems/<%=problem._id%>/tag" method="POST">
+                <input type="text" name="tag" style="width: 100%;">
+                <button class="btn btn-lg btn-block btn-default" type="submit" style="margin: 20px 0 20px 0;">TAG</button>
+            </form>
+            <form action="/admin/problems/<%=problem._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-lg btn-block btn-danger" style="margin-bottom: 10px;">DELETE</button>
+            </form>
+            <a href="/admin/problems/<%=problem._id%>/reset" >
+                <button class="btn btn-lg btn-block btn-danger" style="margin-bottom: 10px;">RESET</button>
+            </a>
+            <a href="/admin/problems/<%=problem._id%>/edit" >
+                <button class="btn btn-lg btn-block btn-warning" style="margin-bottom: 10px;">EDIT</button>
+            </a>
+            <a href="/admin/problems" >
+                <button class="btn btn-lg btn-block " style="background-color: #00ab66;color: #E0E0E0">BACK</button>
+            </a>
+
+        </div>
+        <div class="col-md-9 pbd">
+            <h4><%=problem.name%></h4>
+            <h4>Answer :<%=problem.answer%></h4>
+            <h4>Score :<%=problem.score%></h4>
+            <h4>Feedback :<%=problem.feedback%></h4>
+            <%if(problem.submits){%>
+            <h4>Wrong Submits :<%=problem.submits.wrong%></h4>
+            <h4>Correct Submits :<%=problem.submits.correct%></h4>
+            <%}%>
+            <p><%= problem.description %></p>
+            <%if(problem.tags){%>
+            <h4> TAGS:
+                <%problem.tags.forEach(function (tag) {%>
+                <%=tag%> ,
+                <%});%>
+            </h4>
+            <%}%>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="list-group">
+        <%problem.files.forEach(function (file) {%>
+        <li class="list-group-item"><%=file%></li>
+        <%});%>
+    </div>
+</div>
+
+<% include ../partials/footer %>
+</body>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Parallax Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <style>
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+    </style>
+</head>
+<body>
+<nav class="light-blue accent-3" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">
+            <span class="white-text">ACM</span>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"><span class="white-text">Sign Up</span></a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<div class="row">
+    <form class="col s12" action="/register" method="post">
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="firstname" type="text" class="validate">
+                <label for="firstname">نام </label>
+            </div>
+            <div class="input-field col s6">
+                <input name="lastname" type="text" class="validate">
+                <label for="lastname">نام خانوادگی</label>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input name="password" type="text" class="validate">
+            <label for="password"> گذرواژه</label>
+        </div>
+        <div class="input-field col s6">
+            <input name="password_confirm" type="text" class="validate">
+            <label for="password_confirm">تایید گذرواژه</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">آدرس ایمیل</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label>رشته </label>
+            <div class="switch">
+                <label>
+                    کامپیوتر
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    برق
+                </label>
+            </div>
+            <div class="input-field col s6">
+                <input name="studentId" type="number" class="validate">
+                <label for="studentId">شماره دانشجویی</label>
+            </div>
+        </div>
+        <div style="width: 100%;" class="g-recaptcha" data-sitekey="6LdbUwcUAAAAAKlfIQiWMnZw0SGCJgXNbbvvTerb"></div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">ثبت نام :)
+            <i class="material-icons right"></i>
+        </button>
+    </form>
+</div>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

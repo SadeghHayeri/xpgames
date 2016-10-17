@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>XP Games</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <style>
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+    </style>
+</head>
+<body>
+<nav class="light-blue accent-3" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="white-text brand-logo">ACM</a>
+        <%if(!currentUser){%>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="/login">ورود</a></li>
+        </ul>
+        <%}else{%>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text" href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="white-text"href="/logout">خروج</a></li>
+        </ul>
+        <%}%>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<div class="row">
+    <form id="formValidate" class="formValidate col s12" action="/register" method="post">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input name="firstname" type="text" class="validate" data-validation="required">
+                    <label for="firstname">نام </label>
+                </div>
+                <div class="input-field col s6">
+                    <input name="lastname" type="text" class="form-control validate">
+                    <label for="lastname">نام خانوادگی</label>
+                </div>
+            </div>
+            <div class="input-field col s6">
+                <input name="password" type="password" class="validate">
+                <label for="password"> گذرواژه</label>
+            </div>
+            <div class="input-field col s6">
+                <input name="password_confirm" type="password" class="validate">
+                <label for="password_confirm">تایید گذرواژه</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="email" type="email" class="validate">
+                    <label for="email">آدرس ایمیل</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label>رشته </label>
+                <div class="switch">
+                    <label>
+                        کامپیوتر
+                        <input type="checkbox">
+                        <span class="lever"></span>
+برق
+                    </label>
+                </div>
+                <div class="input-field col s6">
+                    <input name="studentId" type="number" class="validate" min="810195000" max="810195999">
+                    <label for="studentId">شماره دانشجویی</label>
+                </div>
+            </div>
+            <div style="width: 100%;" class="g-recaptcha" data-sitekey="6LdPnQgUAAAAAJWz6qmZOgt5JGlJd2fXJvMXOuMd"></div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">ثبت نام :)
+                <i class="material-icons right"></i>
+            </button>
+        </form>
+</div>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script>
+    $("#formValidate").validate({
+        rules: {
+            uname: {
+                required: true,
+                minlength: 5
+            },
+            cemail: {
+                required: true,
+                email:true
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+            cpassword: {
+                required: true,
+                minlength: 5,
+                equalTo: "#password"
+            },
+            curl: {
+                required: true,
+                url:true
+            },
+            crole:"required",
+            ccomment: {
+                required: true,
+                minlength: 15
+            },
+            cgender:"required",
+            cagree:"required",
+        },
+        //For custom messages
+        messages: {
+            uname:{
+                required: "Enter a username",
+                minlength: "Enter at least 5 characters"
+            },
+            curl: "Enter your website",
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

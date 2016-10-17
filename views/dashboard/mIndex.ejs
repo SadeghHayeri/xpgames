@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Responsive Coming soon Template">
+    <meta name="keywords" content="Coming soon template, Bootstrap template, Coming soon, Responsive coming soon Template, Under Construction, countdown , Mailchimp, Youtube Video">
+    <meta name="author" content="traivan98">
+
+    <title>شکار معما</title>
+
+    <!-- favicon linke -->
+    <link rel="icon" type="image/png" href="/firstpage/img/favicon.png" />
+
+    <!-- ===============    Bootstrap core CSS     =============== -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.rtl.css" media="all" />
+    <!-- ===============    dashboard core CSS     =============== -->
+    <link rel="stylesheet" type="text/css" href="/dashboard/dashboard.css" media="all" />
+</head>
+<body>
+<nav class="navbar navbar-inverse  " style="margin-bottom: 0;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/firstpage/img/logo.png" width="30px"height="30px">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <% if(!currentUser){ %>
+                <li><a class="btn-group-sm btn-default navbar-btn" href="/login">ورود</a></li>
+                <li><a class="btn-group-sm btn-default navbar-btn" href="/register">ثبت نام</a></li>
+                <% } else { %>
+                <%if(currentUser.group){%>
+                <li><a href="#"><%= user.group.name%></a></li>
+                <%}%>
+                <li><a href="#"><%= currentUser.username %> حساب کاربری  </a></li>
+                <li><a href="/logout">خروج</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="backch">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <h1><span class="glyphicon "></span>معما ها</h1>
+                </div>
+
+                <div class="col-md-3" >
+
+                </div>
+                <div class="col-md-3" style="text-align: right;padding-top: 10px;">
+                    <button type="button" class="btn btn-success btn-lg btn-block btncolor">
+                        <% if(user.group){ %>
+                        <a style="text-decoration: none;color: #ffffff;" href="#"><%= user.group.name%></a>
+                        <% } else { %><a>شما گروهی ندارید</a> <% } %>
+                    </button>
+                    <a style="text-decoration: none;" href="/dashboard/ranking"><button  type="button" class="btn btn-default btn-lg btn-block">امتیاز گروه ها</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row problem-cont">
+        <div class="eachproblem col-md-3 ">
+            <%if(metaPuzzle){%>
+            <div class="problembod">
+                <div class="caption topproblem" style="position: relative;">
+                    <h1>معمای اصلی</h1>
+                    <span >برای آنکه به مرحله بعد بروید حتما باید این معما را حل کنید</span>
+                </div>
+                <div class="problemname">
+                    <h4><%= metaPuzzle.name %></h4>
+                </div>
+                <div>
+
+                    <%if(metaPuzzle.solved){%>
+                    <a href="/dashboard/puzzles/<%= metaPuzzle._id %>" class="btn btn-success">حل شده است</a>
+                    <%}else{%>
+                    <a href="/dashboard/puzzles/<%= metaPuzzle._id %>" class="btn btn-warning">وارد شوید</a>
+                    <%}%>
+                </div>
+            </div>
+            <%}%>
+        </div>
+        <% if(puzzles){puzzles.forEach(function(puzzle){ %>
+        <div class="eachproblem col-md-3 " >
+            <div class="problembod">
+                <div class="caption topproblem">
+                    <h1>معما</h1>
+                </div>
+                <div class="problemname">
+                    <h4><%= puzzle.name %></h4>
+                </div>
+                <p>
+                    <%if(puzzle.solved){%>
+                    <a href="/dashboard/puzzles/<%= puzzle._id %>" class="btn btn-success">حل شده است</a>
+                    <%}else{%>
+                    <a href="/dashboard/puzzles/<%= puzzle._id %>" class="btn btn-warning">وارد شوید</a>
+                    <%}%>
+                </p>
+            </div>
+        </div>
+        <% });} %>
+    </div>
+    <div class="row nextstage">
+        <div class="container">
+            <div class="col-md-3">
+                <%if(canGoToNextStage){%>
+                <a href="/dashboard/nextstage" class="btn btn-success btn-default btn-lg btn-block btnxt" >(:  مرحله بعد  </a>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
