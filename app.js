@@ -62,8 +62,8 @@ var transporter = nodemailer.createTransport('smtps://utacmchapter%40gmail.com:a
 app.use("/", indexRoutes);
 // app.use("/admin/", groupRoutes);
 // app.use("/dashboard", dashboardRoutes);
-//app.use("/admin", adminRoutes);
-//app.use("/admin/users", userRoutes);
+app.use("/admin", adminRoutes);
+app.use("/admin/users", userRoutes);
 // app.use("/admin/problems", problemRoutes);
 
 app.use(function(req, res, next) {

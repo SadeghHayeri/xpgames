@@ -34,15 +34,14 @@ router.post('/register',function(req, res,next) {
     request(verificationUrl,function(error,response,body) {
 
         body = JSON.parse(body);
-//        if (body.success) {
-if(true){
-                var username = sanitize(req.body.email);
-                var password = sanitize(req.body.password);
-                var firstname = sanitize(req.body.firstname);
-                var lastname = sanitize(req.body.lastname);
-                var studentId = sanitize(req.body.studentId);
-                var email = sanitize(req.body.email);
-                console.log(email);
+        var username = sanitize(req.body.email);
+        var password = sanitize(req.body.password);
+        var firstname = sanitize(req.body.firstname);
+        var lastname = sanitize(req.body.lastname);
+        var studentId = sanitize(req.body.studentId);
+        var email = sanitize(req.body.email);
+
+        if(body.success&&(!(firstname.length==0||lastname.length==0||email.length==0))){
                 var user = new User({
                     firstname: firstname,
                     lastname: lastname,
@@ -195,34 +194,37 @@ router.post('/reset/:token', function(req, res,next) {
         res.redirect('/login');
     });
 });
-
 router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
-    User.findById(req.user.id).populate("group").exec(function (err,user) {
-        if(!user.group) {
-            res.render("home", {user:user,puzzles: null, metaPuzzle: null, canGoToNextStage: null});
-        }else {
-            user.group.findCurrentStagePuzzles(function (err, puzzles) {
-                user.group.findCurrentStageMetaPuzzle(function (err, metaPuzzle) {
-                    var canGoToNextStage = false;
-                    if (metaPuzzle)
-                        canGoToNextStage = metaPuzzle.solved;
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        res.render("home",
-                            {
-                                user:user,
-                                puzzles: puzzles,
-                                metaPuzzle: metaPuzzle,
-                                canGoToNextStage: canGoToNextStage
-                            }
-                        );
-                    }
-                });
-            });
-        }
-    });
+    res.redirect("/");
 });
+// router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
+//
+//     User.findById(req.user.id).populate("group").exec(function (err,user) {
+//         if(!user.group) {
+//             res.render("home", {user:user,puzzles: null, metaPuzzle: null, canGoToNextStage: null});
+//         }else {
+//             user.group.findCurrentStagePuzzles(function (err, puzzles) {
+//                 user.group.findCurrentStageMetaPuzzle(function (err, metaPuzzle) {
+//                     var canGoToNextStage = false;
+//                     if (metaPuzzle)
+//                         canGoToNextStage = metaPuzzle.solved;
+//                     if (err) {
+//                         console.log(err);
+//                     } else {
+//                         res.render("home",
+//                             {
+//                                 user:user,
+//                                 puzzles: puzzles,
+//                                 metaPuzzle: metaPuzzle,
+//                                 canGoToNextStage: canGoToNextStage
+//                             }
+//                         );
+//                     }
+//                 });
+//             });
+//         }
+//     });
+// });
 
 router.get('/verify/:token', function(req, res,next) {
     User.findOne({ verifyToken: req.params.token}, function(err, user) {

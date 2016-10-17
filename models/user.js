@@ -2,12 +2,34 @@ var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 var mongoose = require("mongoose");
 var passportLocalMongoose = require("passport-local-mongoose");
-
+var validateLocalStrategyProperty = function(property) {
+    return ((this.provider !== 'local' && !this.updated) || property.length);
+};
 var UserSchema = new mongoose.Schema({
-    firstname:String,
-    lastname:String,
-    studentId:Number,
-    email:String,
+    firstname: {
+        type: String,
+        trim: true,
+        default: '',
+        validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+    },
+    lastname:{
+        type: String,
+        trim: true,
+        default: '',
+        validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+    },
+    studentId:{
+        type: String,
+        trim: true,
+        default: '',
+        validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+    },
+    email:{
+        type: String,
+        trim: true,
+        default: '',
+        validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+    },
     username: String,
     password: String,
     groupname:String,
