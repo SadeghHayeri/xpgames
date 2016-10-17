@@ -30,17 +30,15 @@ router.get("/register", function(req, res){
 });
 
 router.post('/register',function(req, res,next) {
-    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdbUwcUAAAAAMquB_XKPwD5XtUPwhY19iIU8umM' +"&response=" +req.body['g-recaptcha-response'];
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
-
         body = JSON.parse(body);
         var username = sanitize(req.body.email);
         var password = sanitize(req.body.password);
         var firstname = sanitize(req.body.firstname);
         var lastname = sanitize(req.body.lastname);
         var studentId = sanitize(req.body.studentId);
-        var email = sanitize(req.body.email);
-
+        var email = sanitize(req.body.email);;
         if(body.success&&(!(firstname.length==0||lastname.length==0||email.length==0))){
                 var user = new User({
                     firstname: firstname,
@@ -109,9 +107,9 @@ router.get('/forgot', function(req, res,next) {
 
 router.post('/forgot', function(req, res, next) {
     var usr;
-    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdbUwcUAAAAAMquB_XKPwD5XtUPwhY19iIU8umM' +"&response=" +req.body['g-recaptcha-response'];
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
-        if (body.success) {
+        if (true) {
             async.waterfall([
                 function (done) {
                     crypto.randomBytes(24, function (err, buf) {
@@ -130,16 +128,13 @@ router.post('/forgot', function(req, res, next) {
                         user.resetPasswordToken = token;
                         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
                         user.save(function (err) {
-                            var transporter = nodemailer.createTransport('smtps://ahsprim%40gmail.com:@smtp.gmail.com');
+                            var transporter = nodemailer.createTransport('smtps://utacmchapter%40gmail.com:acmGoOo([oO]*])GoOoriii@smtp.gmail.com');
                             var mailOptions = {
-                                from: '"Fred Foo ?" <foo@blurdybloop.com>', // sender address
-                                to: user.email, // list of receivers
-                                subject: 'ACM Register Verification', // Subject line
-                                text: 'سلام. لطفا روی لینک زیر کلیک کن تا گذرواژه ات رو تغییر بدی:)', // plaintext body
-                                html: ejs.render('http://<%=host%>/reset/<%=token%>', {
-                                    host: req.headers.host,
-                                    token: token
-                                }) // html body
+                                from: '"UT ACM" <ut.acm.chapter@gmail.com>', // sender address
+                                to: req.body.email, // list of receivers
+                                subject: 'ACM :: Register Verification', // Subject line
+                                text: 'سلام. لطفا روی لینک زیر کلیک کن تا گذر واژه ات رو عوض کنی :)', // plaintext body
+                                html: ejs.render('http://<%=host%>/reset/<%=token%>',{host:req.headers.host,token:token}) // html body
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -156,6 +151,8 @@ router.post('/forgot', function(req, res, next) {
                 if (err) return next(err);
                 res.redirect('/');
             });
+        }else{
+            res.redirect('/forgot');
         }
     });
 });
