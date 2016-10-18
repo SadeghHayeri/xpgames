@@ -10,6 +10,7 @@ var express     = require("express"),
     User        = require("./models/user"),
     session = require("express-session"),
     seedDB      = require("./seeds"),
+    ejs = require("ejs"),
     methodOverride = require("method-override");
     var SMTPServer = require('smtp-server').SMTPServer;
     var smtpTransport = require('nodemailer-smtp-transport');
@@ -20,6 +21,7 @@ mongoose.Promise = global.Promise;
 var groupRoutes    = require("./routes/group"),
     dashboardRoutes    = require("./routes/dashboard"),
     adminRoutes    = require("./routes/admin"),
+    middleware    = require("./middleware/index"),
     problemRoutes = require("./routes/problems"),
     indexRoutes      = require("./routes/index");
     userRoutes      = require("./routes/user");
@@ -58,6 +60,20 @@ app.use(function(req, res, next){
 });
 
 var transporter = nodemailer.createTransport('smtps://utacmchapter%40gmail.com:acmGoOo([oO]*])GoOoriii@smtp.gmail.com');
+// var mailOptions = {
+//     from: '"UT ACM" <ut.acm.chapter@gmail.com>', // sender address
+//     to: "ahsprim@gmail.com", // list of receivers
+//     subject: 'ACM :: XP Games Register Verification', // Subject line
+//     text: '', // plaintext body
+//     html: "<html lang='fa'>" +
+//         " <body><div  style='text-align: right'> سلام  <br> ثبت نامت با موفقیت انجام شد <br>: برای تایید ایمیلت رو لینک زیر کلیک کن  <br></div> http://<%=host%>/reset/<%=token%></body>"// html body
+// };
+// transporter.sendMail(mailOptions, function (error, info) {
+//     if (error) {
+//         return console.log(error);
+//     }
+//     console.log('Message sent: ' + info.response);
+// });
 
 app.use("/", indexRoutes);
 // app.use("/admin/", groupRoutes);

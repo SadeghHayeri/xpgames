@@ -15,20 +15,15 @@ var ejs = require("ejs");
 var smtpTransport = require('nodemailer-smtp-transport');
 var directTransport = require('nodemailer-direct-transport');
 // create reusable transporter object using the default SMTP transport
-
-
 // setup e-mail data with unicode symbols
-
- // router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
+// router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
 router.get("/", function(req, res){
     res.render("landing");
 });
-
 // show register form
 router.get("/register", function(req, res){
-   res.render("register"); 
+    res.render("register");
 });
-
 router.post('/register',function(req, res,next) {
     var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
@@ -45,39 +40,38 @@ router.post('/register',function(req, res,next) {
         else
             studyField = "Electric";
         if(body.success&&(!(firstname.length==0||lastname.length==0||email.length==0))){
-                var user = new User({
-                    firstname: firstname,
-                    lastname: lastname,
-                    username: username,
-                    studentId: studentId,
-                    studyField: studyField,
-                    email: email,
-                    password: password,
-                });
-                User.findOne({username: user.username}).exec(function (err, existUser) {
-                    if (err) return next(err);
-                    if (existUser) {
-                        console.log('Username already exist');
-                        req.flash('error', 'Username already exist');
-                        res.redirect('/register');
-                    } else {
-                        user.save(function (err) {
-                            req.logIn(user, function (err) {
-                                res.redirect('/home');
-                            });
+            var user = new User({
+                firstname: firstname,
+                lastname: lastname,
+                username: username,
+                studentId: studentId,
+                studyField: studyField,
+                email: email,
+                password: password,
+            });
+            User.findOne({username: user.username}).exec(function (err, existUser) {
+                if (err) return next(err);
+                if (existUser) {
+                    console.log('Username already exist');
+                    req.flash('error', 'Username already exist');
+                    res.redirect('/register');
+                } else {
+                    user.save(function (err) {
+                        req.logIn(user, function (err) {
+                            res.redirect('/home');
                         });
-                    }
-                });
+                    });
+                }
+            });
         } else {
-         res.redirect('/register')
+            res.redirect('/register')
         }
     });
 });
 //show login form
 router.get("/login", function(req, res){
-   res.render("login"); 
+    res.render("login");
 });
-
 router.post('/login', function(req, res, next) {
     var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
@@ -91,28 +85,23 @@ router.post('/login', function(req, res, next) {
                 }
                 req.logIn(user, function(err) {
                     if (err) return next(err);
-
                     return res.redirect('/home');
                 });
             })(req, res, next);
         }else{
             res.redirect('/login');
         }
-
     });
 });
-
 // logout route
 router.get("/logout", function(req, res){
-   req.logout();
-   req.flash("success", "LOGGED YOU OUT!");
-   res.redirect("/");
+    req.logout();
+    req.flash("success", "LOGGED YOU OUT!");
+    res.redirect("/");
 });
-
 router.get('/forgot', function(req, res,next) {
     res.render('forgot_password', {user: req.user});
 });
-
 router.post('/forgot', function(req, res, next) {
     var usr;
     var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
@@ -141,9 +130,10 @@ router.post('/forgot', function(req, res, next) {
                             var mailOptions = {
                                 from: '"UT ACM" <ut.acm.chapter@gmail.com>', // sender address
                                 to: req.body.email, // list of receivers
-                                subject: 'ACM :: Register Verification', // Subject line
+                                subject: 'ACM :: XP Games Reset Password', // Subject line
                                 text: 'سلام. لطفا روی لینک زیر کلیک کن تا گذر واژه ات رو عوض کنی :)', // plaintext body
-                                html: ejs.render('http://<%=host%>/reset/<%=token%>',{host:req.headers.host,token:token}) // html body
+                                html: ejs.render("<html lang='fa'>" +
+                                    " <body><div  style='text-align: right'> سلام  <br>: لطفا روی لینک زیر کلیک کن تا گذر واژه ات رو عوض کنی <br></div> http://<%=host%>/reset/<%=token%></body>" ,{host:req.headers.host,token:token})// html body
                             };
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
@@ -165,22 +155,20 @@ router.post('/forgot', function(req, res, next) {
         }
     });
 });
-
 router.get('/reset/:token', function(req, res,next) {
     User.findOne({ resetPasswordToken: req.params.token,
-        resetPasswordExpires: { $gt: Date.now() }
-    }
-        , function(err, user) {
-        if(err) return next(err);
-        if (!user) {
-            // req.flash('error', 'Password reset token is invalid or has expired.');
-            return res.redirect('/forgot');
-        } else{
-            res.render('reset_password', {user:user});
+            resetPasswordExpires: { $gt: Date.now() }
         }
-    });
+        , function(err, user) {
+            if(err) return next(err);
+            if (!user) {
+                // req.flash('error', 'Password reset token is invalid or has expired.');
+                return res.redirect('/forgot');
+            } else{
+                res.render('reset_password', {user:user});
+            }
+        });
 });
-
 router.post('/reset/:token', function(req, res,next) {
     async.waterfall([
         function(done) {
@@ -191,19 +179,19 @@ router.post('/reset/:token', function(req, res,next) {
                         req.flash('error', 'Password reset token is invalid or has expired.');
                         return res.redirect('back');
                     }
-    
+
                     user.password = req.body.password;
                     user.resetPasswordToken = undefined;
                     user.resetPasswordExpires = undefined;
-    
+
                     user.save(function(err) {
-                    req.logIn(user, function(err) {
-                        req.flash('Success! Your password has been changed.');
-                        req.flash('success', 'Success! Your password has been changed.');
-                        done(err, user);
+                        req.logIn(user, function(err) {
+                            req.flash('Success! Your password has been changed.');
+                            req.flash('success', 'Success! Your password has been changed.');
+                            done(err, user);
+                        });
                     });
                 });
-            });
         },
     ], function(err) {
         res.redirect('/login');
@@ -240,19 +228,17 @@ router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res)
 //         }
 //     });
 // });
-
 router.get('/verify/:token', function(req, res,next) {
     User.findOne({ verifyToken: req.params.token}, function(err, user) {
-            if(err) return next(err);
-            if (!user) {
-                return res.redirect('/');
-            } else{
-                user.verified = true;
-                user.verifyToken = null;
-                user.save();
-                res.redirect("/home");
-            }
-        });
+        if(err) return next(err);
+        if (!user) {
+            return res.redirect('/');
+        } else{
+            user.verified = true;
+            user.verifyToken = null;
+            user.save();
+            res.redirect("/home");
+        }
+    });
 });
-
 module.exports = router;

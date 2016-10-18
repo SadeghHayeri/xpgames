@@ -41,8 +41,9 @@ module.exports = {
                     from: '"UT ACM" <ut.acm.chapter@gmail.com>', // sender address
                     to: req.user.email, // list of receivers
                     subject: 'ACM :: Register Verification', // Subject line
-                    text: 'سلام. لطفا روی لینک زیر کلیک کن تا ایمیلت رو تایید کنی :)', // plaintext body
-                    html: ejs.render('http://<%=host%>/verify/<%=token%>',{host:req.headers.host,token:verifyToken}) // html body
+                    text: ' ', // plaintext body
+                    html: ejs.render("<html lang='fa'>" +
+                        " <body><div  style='text-align: right'> سلام  <br>: ثبت نامت در XP Games  انجام شد  <br>: برای تایید ایمیلت رو لینک زیر کلیک کن  <br></div> http://<%=host%>/reset/<%=token%></body>" ,{host:req.headers.host,token:verifyToken})// html body
                 };
 
                 // send mail with defined transport object

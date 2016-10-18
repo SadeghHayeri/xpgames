@@ -29,9 +29,6 @@
         <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/register">ثبت نام</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
             <li><a style="color:white;" href="/login">ورود</a></li>
         </ul>
         <%}else{%>
@@ -54,28 +51,28 @@
     <form id="formValidate" class="formValidate col s12" action="/register" method="post">
             <div class="row">
                 <div class="input-field col s6">
-                    <input style="text-align: right;" name="lastname" type="text" class="form-control validate">
+                    <input style="text-align: right;" name="lastname" tabindex="2" type="text" class="form-control validate">
                     <label style="text-align:right; padding-right: 5%" for="lastname">نام خانوادگی</label>
                 </div>
                 <div class="input-field col s6">
-                    <input  style="text-align: right;" name="firstname" type="text" class="validate" data-validation="required">
+                    <input  style="text-align: right;" name="firstname" tabindex="1" type="text" class="validate" data-validation="required">
                     <label style="text-align:right; padding-right: 5%" for="firstname">نام </label>
                 </div>
             </div>
+        <div class="row">
+            <div class="input-field col s12" >
+                <input style="text-align: right;" name="email" type="email" tabindex="3" class="validate">
+                <label style="text-align:right; padding-right: 5%" for="email">آدرس ایمیل</label>
+            </div>
+        </div>
             <div class="input-field col s6">
-                <input style="text-align: right;" name="password_confirm" type="password" class="validate">
+                <input style="text-align: right;" name="password_confirm" tabindex="5" type="password" class="validate">
                 <label style="text-align:right; padding-right: 5%" for="password_confirm">تایید گذرواژه</label>
             </div>
         <div class="input-field col s6">
-            <input style="text-align: right;" name="password" type="password" class="validate">
+            <input style="text-align: right;" name="password" type="password" tabindex="4" class="validate">
             <label style="text-align:right; padding-right: 5%" for="password"> گذرواژه</label>
         </div>
-            <div class="row">
-                    <div class="input-field col s12" >
-                        <input style="text-align: right;" name="email" type="email" class="validate">
-                        <label style="text-align:right; padding-right: 5%" for="email">آدرس ایمیل</label>
-                    </div>
-                </div>
             <div class="row" >
                 <div class="switch" style="float: left; margin-top: 9%;">
                     <label>
