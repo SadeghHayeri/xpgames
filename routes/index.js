@@ -81,7 +81,6 @@ router.get("/login", function(req, res){
 router.post('/login', function(req, res, next) {
     request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
-        console.log("fdsdsfdf");
         if(true)
         {
             passport.authenticate('local', function(err, user, info) {
