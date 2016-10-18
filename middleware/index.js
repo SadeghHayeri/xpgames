@@ -43,7 +43,7 @@ module.exports = {
                     subject: 'ACM :: Register Verification', // Subject line
                     text: ' ', // plaintext body
                     html: ejs.render("<html lang='fa'>" +
-                        " <body><div  style='text-align: right'> سلام  <br>: ثبت نامت در XP Games  انجام شد  <br>: برای تایید ایمیلت رو لینک زیر کلیک کن  <br></div> http://<%=host%>/reset/<%=token%></body>" ,{host:req.headers.host,token:verifyToken})// html body
+                        " <body><div  style='text-align: right'> سلام  <br>: ثبت نامت در XP Games  انجام شد  <br>: برای تایید ایمیلت رو لینک زیر کلیک کن  <br></div> http://<%=host%>/verify/<%=token%></body>" ,{host:req.headers.host,token:verifyToken})// html body
                 };
 
                 // send mail with defined transport object
