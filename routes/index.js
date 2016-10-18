@@ -91,6 +91,7 @@ router.post('/login', function(req, res, next) {
                 }
                 req.logIn(user, function(err) {
                     if (err) return next(err);
+                    console.log("fdsdsfdf");
                     return res.redirect('/home');
                 });
             })(req, res, next);

@@ -21,22 +21,22 @@
     </style>
 </head>
 <body>
-<nav class="light-blue accent-3" role="navigation">
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">ACM</a>
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
-            <li><a href="/register">ثبت نام</a></li>
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a href="/login">ورود</a></li>
+            <li><a style="color:white;" href="/login">ورود</a></li>
         </ul>
         <%}else{%>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#"><%=currentUser.name%></a></li>
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a href="/logout">خروج</a></li>
+            <li><a style="color:white;" href="/logout">خروج</a></li>
         </ul>
         <%}%>
         <ul id="nav-mobile" class="side-nav">

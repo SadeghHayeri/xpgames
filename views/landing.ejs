@@ -9,10 +9,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
     <style>
         @font-face {
             font-family: IRANSansWeb;
@@ -20,48 +16,29 @@
         }
         body{
             font-family: IRANSansWeb;
+            background-color: rgba(1,162,166,1);
+            /*overflow-x: hidden;*/
         }
     </style>
-    <script>
-        var options = [
-            {selector: '#staggered-test', offset: 50, callback: function(el) {
-                Materialize.toast("This is our ScrollFire Demo!", 1500 );
-            } },
-            {selector: '#staggered-test', offset: 205, callback: function(el) {
-                Materialize.toast("Please continue scrolling!", 1500 );
-            } },
-            {selector: '#staggered-test', offset: 400, callback: function(el) {
-                Materialize.showStaggeredList($(el));
-            } },
-            {selector: '#index-banner', offset: 500, callback: function(el) {
-                Materialize.fadeInImage($(el));
-            } }
-        ];
-        Materialize.scrollFire(options);
-
-    </script>
 </head>
 <body>
-<nav class="white" role="navigation">
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="/" style="position: relative;top:5px;" class="light-blue-text accent-3 brand-logo">ACM</a>
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
         <%if(!currentUser){%>
-            <ul class="right hide-on-med-and-down">
-                <li style="height: 40px; ">
-                    <a style="height: 40px; border-top: 10px" href="/register" id="download-button"
-                       data-position="bottom" data-delay="50" data-tooltip="ثبت نام از فردا شروع میشه"
-                   class="btn-large light-blue accent-3" >ثبت نام</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="light-blue-text accent-3" href="/login">ورود</a></li>
-            </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/login">ورود</a></li>
+        </ul>
         <%}else{%>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="light-blue-text accent-3" href="#"><%=currentUser.name%></a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="light-blue-text accent-3" href="/logout">خروج</a></li>
-            </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/logout">خروج</a></li>
+        </ul>
         <%}%>
         <ul id="nav-mobile" class="side-nav">
             <li><a href="#">Navbar Link</a></li>
@@ -70,49 +47,47 @@
     </div>
 </nav>
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <br><br>
-            <h1 class=" header center teal-text text-lighten-2">
-                <span style=" position:absolute;top: 290px;left: 300px" class="light-blue-text accent-3">خوش اومدی XP Games به   </span>
-            </h1>
-            <div class="row center">
-                <h5 class="header col s12 light"></h5>
+<div id="index-banner" class="parallax-container mainhead">
+    <div class="heading">
+        <div class="section no-pad-bot">
+            <!--<div style="position: absolute"><img src="background3.jpg" alt="Unsplashed background img 1"></div>-->
+            <div class="container">
+                <!--<br><br>-->
+                <!--<br><br>-->
+                <div class="headname">
+                    <h1 class=" header center teal-text text-lighten-2" style="
+    margin-top: 10%;
+">
+                        <span class="accent-3 Hedear" style="color: white;font-size: 45px;border-radius: 28%;border: none; "> <span style="text-align: left; font-family: Roboto">XP GAMES</span>  خوش آمدید به</span>
+                    </h1>
+                </div>
             </div>
-            <div class="row center">
-                <a href="/home" id="download-button" class="btn-large waves-effect waves-light light-blue accent-3">شروع</a>
-            </div>
-            <br><br>
-
         </div>
     </div>
-    <div class="parallax"><img  src="background6.png" alt="Unsplashed background img 1"></div>
+
 </div>
 
-<div class="container">
+<div class="container xpcontainer">
     <div class="section">
 
         <div class="row">
             <div class="col s12 center">
                 <h3><i class="mdi-content-send brown-text"></i></h3>
-                <h4>XP Games</h4>
-                <p class="center-align light">
-                   جمعه ۲۹ مهر
+                <h4 style="color: white;font-size: 50px;font-family: Roboto;">XP Games</h4>
+                <p class="center-align light" style="color: white">
+                    جمعه ۲۹ مهر
                     <br>
                     یه روز با کلی برنامه‌های مهیج
                     <br>
                     که سال بالایی‌ها برای خوش آمدگویی بهت تدارک دادن
+
                     <br>
                     هم می‌تونی با دانشکده و هم با بچه‌ها بیشتر آشنا بشی
+                    زمانبندی
+
                 </p>
                 <div class="row center">
-                    <%if(currentUser){if(!currentUser.verified){%>
-                    <a href="/" id="download-button" data-position="bottom" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن"
-                       class="tooltipped btn-large waves-effect waves-light light-blue accent-3">شروع</a>
-                    <%}}else{%>
-                        <a href="/home" id="download-button" class="btn-large waves-effect waves-light light-blue accent-3">زمانبندی</a>
-                    <%}%>
+                    <a href="/home" id="download-button" class="btn-large waves-effect waves-light accent-3" style="background-color: rgba(41,217,194,1);">زمانبندی</a>
                 </div>
             </div>
         </div>
@@ -120,83 +95,101 @@
     </div>
 </div>
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <br><br>
-            <h1 class=" header center teal-text text-lighten-2">
-                <span class="light-blue-text accent-3">بازی کن و برنده شو</span>
-            </h1>
-            <div class="row center">
-                <h5 class="header col s12 light"></h5>
-            </div>
-            <div class="row center">
-                <a href="/home" id="download-button" class="btn-large waves-effect waves-light light-blue accent-3">شروع</a>
-            </div>
-            <br><br>
+<!--<div id="index-banner" class="parallax-container">-->
+<!--<div class="section no-pad-bot">-->
+<!--<div class="container">-->
+<!--<br><br>-->
 
-        </div>
-    </div>
-    <div class="parallax"><img src="back9.jpg" alt="Unsplashed background img 1"></div>
-</div>
+<!--<br><br>-->
 
-<div class="container">
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class="parallax"><img src="acmback.png" alt="Unsplashed background img 1"></div>&ndash;&gt;-->
+<!--</div>-->
+
+<div class="container" style="width: 100%;">
     <div class="section">
 
         <!--   Icon Section   -->
         <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons light-blue-text accent-3">flash_on</i></h2>
-                    <h5 class="center">آشنایی با ای سی ام</h5>
 
-                    <p class="light">
-                        <br>میخوای بدونی ای سی ام چیه.
-                        <br>
-                    </p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons light-blue-text accent-3">group</i></h2>
-                    <h5 class="center">XP Game</h5>
-
-                    <p class="light">یه مسابقه خفن و دورهمی :) که خیلی خوش میگذره تازه اگه برنده بشی جایزه هم میگیرین :)</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons light-blue-text accent-3">settings</i></h2>
-                    <h5 class="center">گپ با سال بالایی ها</h5>
-
-                    <p class="light">میتونی با سال بالایی ها آشنا بشی و از تجربیاتشون استفاده کنی و درباره دانشگاه بیشتر بدونی </p>
-                </div>
-            </div>
         </div>
 
     </div>
 </div>
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
+<div id="index-banner" class="parallax-container mainhead setback2">
+    <div class="section no-pad-bot heading">
         <div class="container">
             <br><br>
-            <h1 class=" header center teal-text text-lighten-2" >
-                <span class="light-blue-text accent-3" > با ای سی امی ها بیشتر آشنا شو </span>
+
+            <h1 class=" header center teal-text text-lighten-2">
+                <span class="accent-3" style="color:white;">بازی کن و برنده شو</span>
             </h1>
-            <div class="row center">
-                <h5 class="header col s12 light"></h5>
-            </div>
-            <div class="row center">
-                <a href="/home" id="download-button" class="btn-large waves-effect waves-light light-blue accent-3">شروع</a>
-            </div>
+            
             <br><br>
 
         </div>
     </div>
-    <div class="parallax"><img src="background2.jpg" alt="Unsplashed background img 1"></div>
+    <!--<div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>-->
+</div>
+<div class="row">
+    <div class="col s12 m4 designComponent">
+        <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">XP Game</h5>
+
+            <p class="light">یه مسابقه خفن و دورهمی :) که خیلی خوش میگذره تازه اگه برنده بشی جایزه هم میگیرین :)</p>
+        </div>
+    </div>
+    <div class="col s12 m4 designComponent">
+        <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">آشنایی با ای سی ام</h5>
+
+            <p class="light">
+                <br>میخوای بدونی ای سی ام چیه.
+                <br>
+            </p>
+        </div>
+    </div>
+    <div class="col s12 m4 designComponent">
+        <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">گپ با سال بالایی ها</h5>
+
+            <p class="light">میتونی با سال بالایی ها آشنا بشی و از تجربیاتشون استفاده کنی و درباره دانشگاه بیشتر بدونی </p>
+        </div>
+    </div>
+</div>
+<!--<div class="container" style="background-color: #bc314a;border: 5%;border-radius: 10%;box-shadow: -1px -1px 19px #1e474e;">-->
+<!--<div class="section">-->
+
+<!--<div class="row">-->
+<!--<div class="col s12 center" style="color: white;">-->
+<!--<h3><i class="mdi-content-send brown-text"></i></h3>-->
+<!--<h4>Contact Us</h4>-->
+<!--<p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<div id="index-banner" class="parallax-container mainhead setback3">
+    <div class="section no-pad-bot heading" style="background: linear-gradient(to top, rgba(255,0,0,0), rgba(0, 0, 0, 0.9));">
+        <div class="container" style="position: relative; margin-top: 9.3%;">
+            <br><br>
+            <h1 class=" header center teal-text text-lighten-2" >
+                <span class="accent-3" style="color: white; font-size:55px;" > با دانشگاه و آدمای اون بیشتر آشنا شو</span>
+            </h1>
+
+
+            <br><br>
+
+        </div>
+    </div>
+    <!--<div class="parallax"><img src="background2.jpg" alt="Unsplashed background img 1"></div>-->
 </div>
 
 <div class="container" hidden>
@@ -235,32 +228,33 @@
     </div>
 </div>
 
-<footer class="page-footer white">
+<footer class="page-footer accent-3" style="background-color: rgba(1,162,166,1);">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">ACM </h5>
-                <h3 class="light-blue-text accent-3">University of Tehran ACM Student Chapter</h3>
+                <h5 class="white-text" style="color: white">ACM </h5>
+                <p class="grey-text text-lighten-4">University of Tehran ACM Student Chapter</p>
             </div>
-            <a href="http://ut.ac.ir">
-            <div class="col l3 s12">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="small material-icons"><img src="UT.png" style="width: 100%; height:100%; position: relative"/></i></h2>
-                    <h5 class="center">University of Tehran</h5>
-                </div>
-            </div>
-            </a>
-            <a href="http://acm.ut.ac.ir">
             <div class="col l3 s12">
                 <div class="icon-block">
                     <h2 class="center brown-text"><i class="small material-icons"><img src="background4.png" style="width: 100%; height:100%; position: relative"/></i></h2>
-                    <h5 class="center">ACM</h5>
+                    <h5 class="center" style="color: white">UT</h5>
                 </div>
             </div>
-            </a>
+            <div class="col l3 s12">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="small material-icons"><img src="background4.png" style="width: 100%; height:100%; position: relative"/></i></h2>
+                    <h5 class="center" style="color: white">ACM</h5>
+                </div>
+            </div>
         </div>
     </div>
-
+    <div class="footer-copyright" style="background-color: rgba(188,49,74,1); ">
+        <div class="container">
+            <!--Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>-->
+            @copyright
+        </div>
+    </div>
 </footer>
 
 
@@ -268,5 +262,6 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+
 </body>
 </html>

@@ -21,19 +21,22 @@
     </style>
 </head>
 <body>
-<nav class="light-blue accent-3" role="navigation">
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="white-text brand-logo">ACM</a>
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
-            <li><a class="white-text" href="/register">ثبت نام</a></li>
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/login">ورود</a></li>
         </ul>
         <%}else{%>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#"><%=currentUser.name%></a></li>
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-            <li><a href="/logout">خروج</a></li>
+            <li><a style="color:white;" href="/logout">خروج</a></li>
         </ul>
         <%}%>
         <ul id="nav-mobile" class="side-nav">
@@ -44,26 +47,26 @@
 </nav>
 <div class="row">
     <div class="card  dark-blue accent-3" style="width: 500px; position: absolute;top: 15%;left: 32%;">
-        <span class="card-title light-blue-text accent-3" style="position:relative;left:30%;top: 100%"> XP Games   ورود به </span>
+        <span class="card-title " style="color:rgba(1,162,166,1);position:relative;left:30%;top: 100%"> XP Games   ورود به </span>
         <form id="formValidate" class="formValidate col s12" action="/login" method="post">
             <div class="row">
                 <div class="input-field col s12" >
-                    <input name="email" type="email" class="validate">
-                    <label for="email">آدرس ایمیل</label>
+                    <input style="text-align: right;" name="email" type="email" class="validate">
+                    <label style="text-align:right; padding-right: 5%" for="email">آدرس ایمیل</label>
                 </div>
             </div>
             <div class="row">
             <div class="input-field col s12">
-                <input name="password" type="password" class="validate">
-                <label for="password"> گذرواژه</label>
+                <input style="text-align: right;" name="password" type="password" class="validate">
+                <label style="text-align:right; padding-right: 5%" for="password"> گذرواژه</label>
             </div>
             </div>
             <div class="row" >
-                <button class="btn light-blue accent-3" type="submit" name="action" style="position:relative;left: 35%;">  ورود
+                <button class="btn " type="submit" name="action" style="background-color: rgba(1,162,166,1);position:relative;left: 35%;">  ورود
                     <i class="material-icons right"></i>
                 </button>
                 <br><br>
-                <a href="/forgot" style="position:relative;left: 60%;"> گذرواژه ات رو فراموش کردی‌؟</a>
+                <a href="/forgot" style="color: rgba(1,162,166,1);position:relative;left: 60%;"> گذرواژه ات رو فراموش کردی‌؟</a>
             </div>
         </form>
     </div>
