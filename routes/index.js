@@ -79,9 +79,9 @@ router.get("/login", function(req, res){
 });
 
 router.post('/login', function(req, res, next) {
-    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
+        console.log("fdsdsfdf");
         if(true)
         {
             passport.authenticate('local', function(err, user, info) {
@@ -91,7 +91,7 @@ router.post('/login', function(req, res, next) {
                 }
                 req.logIn(user, function(err) {
                     if (err) return next(err);
-                    console.log("fdsdsfdf");
+
                     return res.redirect('/home');
                 });
             })(req, res, next);
