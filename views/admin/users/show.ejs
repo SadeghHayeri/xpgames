@@ -53,12 +53,11 @@
         <div class="col-md-9 prbody">
                     <img class="img-responsive" src="<%= user.image %>">
                     <div class="caption-full">
-                        <h4>اسم عضو : </h4>
-                            <p><%=user.username%></p>
                         <p><%=user.email%></p>
                         <p><%=user.firstname%></p>
                         <p><%=user.lastname%></p>
                         <p><%=user.studentId%></p>
+                        <p><%=user.studyField%></p>
                         <%if(user.group){%>
                             <h4>اسم گروه :</h4>
                             <p><a href="/admin/groups/<%=user.group._id%>"> <%= user.group.name%></a></p>
