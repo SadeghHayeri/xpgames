@@ -44,6 +44,7 @@ router.get("/:userId", function(req, res){
     });
 });
 
+
 router.delete("/:userId", function(req, res){
     User.findById(req.params.userId).exec(function (err,user) {
         user.remove();

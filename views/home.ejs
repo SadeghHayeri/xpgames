@@ -24,6 +24,7 @@
 <nav role="navigation" style="background-color: rgba(1,162,166,1);">
     <div class="nav-wrapper container">
         <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+        <a id="logo-container" href="/" class="brand-logo center" style="text-align: center; color:white; font-family: Roboto;">XP Games</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
             <li><a style="color:white;" href="/register">ثبت نام</a></li>
@@ -45,25 +46,27 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<ul class="collapsible popout" data-collapsible="accordion">
-    <a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
+<div class="card  dark-blue accent-3" style="width: 500px; position: absolute;top: 15%;left: 32%; ">
+<ul class="collapsible popout" data-collapsible="accordion" style="text-align: right;">
     <li>
-        <div class="collapsible-header"><i class="material-icons">assignment_ind</i>نام و نام خانوادگی</div>
+        <div class="collapsible-header"><i  class="material-icons">assignment_ind</i>نام و نام خانوادگی</div>
         <div class="collapsible-body"><p><%=user.firstname + user.lastname%></p></div>
+
     </li>
     <li>
         <div class="collapsible-header"><i class="material-icons">email</i>ایمیل</div>
-        <div class="collapsible-body"><p><%=user.email%></p></div>
+        <div class="collapsible-body" style="text-align: left"><p><%=user.email%></p></div>
     </li>
     <li>
         <div class="collapsible-header"><i class="material-icons">info</i>شماره دانشجویی</div>
-        <div class="collapsible-body"><p><%=user.studentId%></p></div>
+        <div class="collapsible-body" style="text-align: left"><p><%=user.studentId%></p></div>
     </li>
     <li>
-        <div class="collapsible-header"><i class="material-icons">code</i>XP</div>
-        <div class="collapsible-body"><%=user.experience%></div>
+        <div class="collapsible-header" style="text-align: left"><i class="material-icons">code</i>XP</div>
+        <div class="collapsible-body" style="text-align: center"> <br> <div class="teal lighten-2 chip white-text " style="font-size: larger"><%=user.experience%></div><br><br></div>
     </li>
 </ul>
+    </div>
 
 
 
@@ -73,7 +76,6 @@
 <script src="js/init.js"></script>
 <script>
     $(document).ready(function(){
-        Materialize.toast('I am a toast!', 4000) // 4000 is the duration of the toast
         $('.collapsible').collapsible({
             accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
         });
