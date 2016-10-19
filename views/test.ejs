@@ -10,17 +10,6 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
-    <script>
-        $(window).resize(function() {
-            var mobileWidth =  (window.innerWidth > 0) ?
-                    window.innerWidth :
-                    screen.width;
-            var viewport = (mobileWidth > 360) ?
-                    'width=device-width, initial-scale=1.0' :
-                    'width=1200';
-            $("meta[name=viewport]").attr('content', viewport);
-        }).resize();
-    </script>
     <style>
         @font-face {
             font-family: IRANSansWeb;
@@ -31,10 +20,11 @@
         }
     </style>
 </head>
-<body style="text-align: center; background-image: url(acmback.png); background-size: cover; ">
-<nav role="navigation" style="background-color: #342f4f; background-image:">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+<body style="text-align: center; ; background-size: cover;; color: white"  >
+<nav role="navigation" style="background-color: #342f4f; ">
+    <div class="nav-wrapper container " >
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white;
+        position: relative;">ACM</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
             <li><a style="color:white;" href="/register">ثبت نام</a></li>
@@ -59,34 +49,60 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-
-<!--<div class="row" style="text-align: center; background-image: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")" >-->
-<div class="row"  >
-    <form class="col s12">
-        <br>
-        <label style="font-size: xx-large">To Be :</label>
-        <div class="row">
-            <div class="input-field col s12">
-                <input style="font-size: xx-large" placeholder="<%=secret.A%>" name="A" type="text" class="validate">
-                <!--<label for="A">A</label>-->
+<div class="row">
+    <div class="card" style="border-style: solid;border-width: 50px; border-radius: 10px; border-color: red; background-color: red;width: 60%; position: fixed;top: 25%;left: 19%;">
+        <label style="font-size: xx-large;color: white">TO BE:</label>
+        <form id="formValidate"  action="/login" method="post">
+            <div class="row">
+                <div class="input-field col s12" >
+                    <input  style="font-size: x-large" name="A" value="A" type="text" >
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input style="font-size: xx-large"  placeholder="<%=secret.C%>" id="last_name" type="text" name="M" class="validate">
-                <!--<label for="C">C</label>-->
+            <div class="row">
+                <div class="input-field col s12" >
+                    <input  style="font-size: x-large" name="C" value="C" type="text" >
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input style="font-size: xx-large"  placeholder="<%=secret.M%>"id="last_name" name="M" type="text" class="validate">
+            <div class="row">
+                <div class="input-field col s12" >
+                    <input  style="font-size: x-large" name="M" value="M" type="text" >
+                </div>
             </div>
-        </div>
-        <button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب
+            <button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب
             <i class="material-icons right"></i>
-        </button>
-    </form>
+            </button>
+        </form>
+    </div>
 </div>
+<!--<div class="row" style="text-align: center; background-image: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")" >-->
+<!--<div class="row "  >-->
+    <!--<br>-->
+    <!--<form class="col s6" style="position: fixed;right: 27.5%;">-->
+        <!--<br>-->
+        <!--<label style="font-size: xx-large;color: white" >TO BE:</label>-->
+        <!--<br>-->
+        <!--<div class="row " style="align-self: center;color: white">-->
+            <!--<div class="input-field col s12">-->
+                <!--<input style="font-size: xx-large" value="A" name="A" type="text" class="validate">-->
+                <!--&lt;!&ndash;<label for="A">A</label>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="input-field col s12" style="text-align: center">-->
+                <!--<input style="font-size: xx-large"  value="C" id="last_name" type="text" name="M" class="validate">-->
+                <!--&lt;!&ndash;<label for="C">C</label>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="input-field col s12">-->
+                <!--<input style="font-size: xx-large"  value="M"id="last_name" name="M" type="text" class="validate">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب-->
+            <!--<i class="material-icons right"></i>-->
+        <!--</button>-->
+    <!--</form>-->
+<!--</div>-->
 
 
 <!--  Scripts-->

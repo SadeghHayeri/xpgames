@@ -17,7 +17,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 var directTransport = require('nodemailer-direct-transport');
 // create reusable transporter object using the default SMTP transport
 // setup e-mail data with unicode symbols
-// router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
+router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
 router.get("/", function(req, res){
     res.render("landing");
 });

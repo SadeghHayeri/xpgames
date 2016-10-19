@@ -20,7 +20,8 @@ router.get("/secret/:token", function(req, res){
         if (err) {
             console.log(err);
         } else {
-            res.render("test",{secrets: secret});
+            // console.log(secret);
+            res.render("test",{secret: secret});
         }
     });
 });
