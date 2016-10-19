@@ -21,6 +21,7 @@ mongoose.Promise = global.Promise;
 var groupRoutes    = require("./routes/group"),
     dashboardRoutes    = require("./routes/dashboard"),
     adminRoutes    = require("./routes/admin"),
+    secretRoutes    = require("./routes/secrets"),
     middleware    = require("./middleware/index"),
     problemRoutes = require("./routes/problems"),
     indexRoutes      = require("./routes/index");
@@ -79,6 +80,7 @@ app.use("/", indexRoutes);
 // app.use("/admin/", groupRoutes);
 // app.use("/dashboard", dashboardRoutes);
 app.use("/admin", adminRoutes);
+app.use("/", secretRoutes);
 app.use("/admin/users", userRoutes);
 // app.use("/admin/problems", problemRoutes);
 

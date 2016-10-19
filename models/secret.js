@@ -1,9 +1,12 @@
 var mongoose = require("mongoose");
 
 var SecretSchema = new mongoose.Schema({
+    name:String,
     token:String,
-    value:Number,
-    expire:Date
+    value:String,
+    A:String,
+    C:String,
+    M:String
 });
 
 SecretSchema.virtual('feedback').get(function (){
