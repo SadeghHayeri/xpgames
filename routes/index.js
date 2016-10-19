@@ -2,6 +2,7 @@ var express = require("express");
 var router  = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var Secret = require("../models/secret");
 var sanitize = require('mongo-sanitize');
 var nodemailer = require('nodemailer');
 var request = require('request');
@@ -19,6 +20,14 @@ var directTransport = require('nodemailer-direct-transport');
 // router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
 router.get("/", function(req, res){
     res.render("landing");
+});
+router.get("/secret/:token", function(req, res){
+    Secret.findOne({token:token}).exec(function (err,secret) {
+        if(secret)
+            console.log(secret.value);
+        res.render("test",{secret:secret});
+    });
+
 });
 // show register form
 router.get("/register", function(req, res){

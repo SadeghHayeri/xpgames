@@ -1,1 +1,98 @@
- <body><div  style='text-align: right'> سلام  <br>: لطفا روی لینک زیر کلیک کن تا گذر واژه ات رو عوض کنی <br></div></body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>XP Games</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <script>
+        $(window).resize(function() {
+            var mobileWidth =  (window.innerWidth > 0) ?
+                    window.innerWidth :
+                    screen.width;
+            var viewport = (mobileWidth > 360) ?
+                    'width=device-width, initial-scale=1.0' :
+                    'width=1200';
+            $("meta[name=viewport]").attr('content', viewport);
+        }).resize();
+    </script>
+    <style>
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+    </style>
+</head>
+<body style="text-align: center; background-image: url(acmback.png); background-size: cover; ">
+<nav role="navigation" style="background-color: #342f4f; background-image:">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+        <%if(!currentUser){%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <%}else{%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/logout">خروج</a></li>
+        </ul>
+        <%}%>
+        <ul id="nav-mobile" class="side-nav " style="background-color: #342f4f;">
+            <%if(!currentUser){%>
+                <li><a style="font-size: x-large; color:white; text-align: right" href="/register">ثبت نام</a></li>
+                <li><a style="font-size: x-large; color:white; text-align: right" href="/login">ورود</a></li>
+            <%}else{%>
+                <li><a style="font-size: x-large; color:white; text-align: right" href="/home"><%=currentUser.name%></a></li>
+                <li><a style="font-size: x-large; color:white; text-align: right" href="/logout">خروج</a></li>
+            <%}%>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<!--<div class="row" style="text-align: center; background-image: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")" >-->
+<div class="row"  >
+    <form class="col s12">
+        <br>
+        <label style="font-size: xx-large">To Be :</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <input style="font-size: xx-large" placeholder="<%=secret.A%>" name="A" type="text" class="validate">
+                <!--<label for="A">A</label>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input style="font-size: xx-large"  placeholder="<%=secret.C%>" id="last_name" type="text" name="M" class="validate">
+                <!--<label for="C">C</label>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input style="font-size: xx-large"  placeholder="<%=secret.M%>"id="last_name" name="M" type="text" class="validate">
+            </div>
+        </div>
+        <button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب
+            <i class="material-icons right"></i>
+        </button>
+    </form>
+</div>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

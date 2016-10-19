@@ -16,11 +16,11 @@ var fs = require("fs");
 
 router.get("/secret/:token", function(req, res){
     // Get all secrets from DB
-    Secret.findOne({token:token}, function(err, secret) {
+    Secret.findOne({token:req.params.token}, function(err, secret) {
         if (err) {
             console.log(err);
         } else {
-            res.render("test", {secrets: secret});
+            res.render("test",{secrets: secret});
         }
     });
 });
