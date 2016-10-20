@@ -13,6 +13,7 @@ var upload = multer({
     }
 });
 var fs = require("fs");
+router.all("/secret",middleware.isLoggedIn);
 router.get("/secret",function(req, res) {
     res.render("secret");
 });
