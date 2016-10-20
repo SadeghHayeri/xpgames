@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>XP Games</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <script>
+        $(window).resize(function() {
+            var mobileWidth =  (window.innerWidth > 0) ?
+                    window.innerWidth :
+                    screen.width;
+            var viewport = (mobileWidth > 360) ?
+                    'width=device-width, initial-scale=1.0' :
+                    'width=1200';
+            $("meta[name=viewport]").attr('content', viewport);
+        }).resize();
+    </script>
+    <style>
+        .circular{
+            border-radius: 50%;
+        }
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+    </style>
+</head>
+<body>
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+        <%if(!currentUser){%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <%}else{%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/logout">خروج</a></li>
+        </ul>
+        <%}%>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<div class="col s12 m7">
+    <h2 class="header">Horizontal Card</h2>
+    <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content large">
+                <div class="chip" style="width: 1000px ;height: 1000px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

@@ -59,30 +59,15 @@
 <nav role="navigation" style="background-color: rgba(1,162,166,1);">
     <div class="nav-wrapper container">
         <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
-        <a id="logo-container" href="/" class="brand-logo center" style="text-align: center; color:white; font-family: Roboto;">XP Games</a>
-        <%if(!currentUser){%>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/register">ثبت نام</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/login">ورود</a></li>
-        </ul>
-        <%}else{%>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/logout">خروج</a></li>
-        </ul>
-        <%}%>
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
+        <a id="logo-container" href="/" class="brand-logo right" style="text-align: center; color:white; font-family: Roboto;">XP Games</a>
+
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
 <br>
 <div class="card center" style="max-width: 90%; margin-left: 80px">
+    <br>
+    <div class="title" style="color: rgba(1,162,166,1);font-size: xx-large">Iteration 1</div>
 <div id="clockdiv">
     <div>
         <span class="hours"></span>

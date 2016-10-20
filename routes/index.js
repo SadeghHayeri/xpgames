@@ -188,6 +188,9 @@ router.get("/scoreboard", function(req, res){
 router.get("/timer", function(req, res){
     res.render("timer");
 });
+router.get("/cast", function(req, res){
+    res.render("cast");
+});
 router.post('/reset/:token', function(req, res,next) {
     async.waterfall([
         function(done) {
