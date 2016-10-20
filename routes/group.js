@@ -53,6 +53,9 @@ router.post("/groups/:groupId/addUser", function(req, res){
 
 router.post("/groups/:groupId/addScore", function(req, res){
     Group.findById(req.params.groupId,function (err,group) {
+        var n = Number(req.body.score);
+        group.competition.score += n;
+        group.save();
         res.redirect('/admin/groups/'+group._id);
     });
 });
