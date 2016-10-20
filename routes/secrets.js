@@ -26,6 +26,23 @@ router.get("/secret/:token", function(req, res){
     });
 });
 
+router.post("/secret/:secret_id", function(req, res){
+    // Get all secrets from DB
+    Secret.findById(req.params.secret_id, function(err, secret) {
+        var A = req.body.A;
+        var C = req.body.C;
+        var M = req.body.M;
+        if (err) {
+            console.log(err);
+        } else {
+            if(secret.verify(A,C,M))
+                res.render("secret");
+            else
+                res.redirect("/secret/"+secret.token);
+        }
+    });
+});
+
 router.get("/admin/secrets/", function(req, res){
     // Get all secrets from DB
     Secret.find({}, function(err, allSecrets) {

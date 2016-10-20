@@ -13,14 +13,14 @@ SecretSchema.virtual('feedback').get(function (){
     return this.problem.getFeedback(this.group.index);
 });
 
-SecretSchema.methods.requsetForHint = function () {
-    if(this.group.competition.hints < 1)
+SecretSchema.methods.verify= function (A,C,M) {
+    A = A.toUpperCase();
+    C = C.toUpperCase();
+    M = M.toUpperCase();
+    if(A==this.A&&C==this.C&&M==this.M)
+        return true;
+    else
         return false;
-    this.group.competition.hints--;
-    this.hintSubmit = Date.now();
-    this.status = "requestedForHint";
-    this.save();
-    return true;
 };
 
 module.exports = mongoose.model("Secret", SecretSchema);

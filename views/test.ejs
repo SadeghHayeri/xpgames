@@ -50,9 +50,9 @@
     </div>
 </nav>
 <div class="row">
-    <div class="card" style="border-style: solid;border-width: 50px; border-radius: 10px; border-color: red; background-color: red;width: 60%; position: fixed;top: 25%;left: 19%;">
+    <div class="card" style="border-style: solid;border-width: 5px; border-radius: 10px; border-color: #342f4f; background-color: <%=secret.value%>;width: 60%; position: fixed;top: 25%;left: 19%;">
         <label style="font-size: xx-large;color: white">TO BE:</label>
-        <form id="formValidate"  action="/login" method="post">
+        <form id="formValidate"  action="/secret/<%=secret._id%>" method="post">
             <div class="row">
                 <div class="input-field col s12" >
                     <input  style="font-size: x-large" name="A" value="A" type="text" >
@@ -60,7 +60,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12" >
-                    <input  style="font-size: x-large" name="C" value="C" type="text" >
+                    <input  style="font-size: x-large" value="C" name="C"  type="text" >
                 </div>
             </div>
             <div class="row">
@@ -71,41 +71,11 @@
             <button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب
             <i class="material-icons right"></i>
             </button>
+            <br>
+            <br>
         </form>
     </div>
 </div>
-<!--<div class="row" style="text-align: center; background-image: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")" >-->
-<!--<div class="row "  >-->
-    <!--<br>-->
-    <!--<form class="col s6" style="position: fixed;right: 27.5%;">-->
-        <!--<br>-->
-        <!--<label style="font-size: xx-large;color: white" >TO BE:</label>-->
-        <!--<br>-->
-        <!--<div class="row " style="align-self: center;color: white">-->
-            <!--<div class="input-field col s12">-->
-                <!--<input style="font-size: xx-large" value="A" name="A" type="text" class="validate">-->
-                <!--&lt;!&ndash;<label for="A">A</label>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<div class="input-field col s12" style="text-align: center">-->
-                <!--<input style="font-size: xx-large"  value="C" id="last_name" type="text" name="M" class="validate">-->
-                <!--&lt;!&ndash;<label for="C">C</label>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-            <!--<div class="input-field col s12">-->
-                <!--<input style="font-size: xx-large"  value="M"id="last_name" name="M" type="text" class="validate">-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب-->
-            <!--<i class="material-icons right"></i>-->
-        <!--</button>-->
-    <!--</form>-->
-<!--</div>-->
-
-
-<!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
