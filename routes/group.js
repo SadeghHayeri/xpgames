@@ -40,7 +40,7 @@ router.post("/groups", function(req, res){
 
 router.post("/groups/:groupId/addUser", function(req, res){
     Group.findById(req.params.groupId,function (err,group) {
-        User.findOne({username:req.body.username}).exec(function (err,user) {
+        User.findById(req.body.userid).exec(function (err,user) {
             if(user) {
                 group.addMember(user);
             } else {

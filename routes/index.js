@@ -176,7 +176,8 @@ router.get('/reset/:token', function(req, res,next) {
 // });
 router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
 
-    User.findById(req.user.id).exec(function (err,user) {
+    User.findById(req.user.id).populate("group").exec(function (err,user) {
+        console.log(user);
         res.render("home",{user:user});
     });
 });

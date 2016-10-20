@@ -63,7 +63,7 @@
     </li>
     <li>
         <div class="collapsible-header" style="text-align: left"><i class="material-icons">code</i>XP</div>
-        <div class="collapsible-body" style="text-align: center"> <br> <div class="teal lighten-2 chip white-text " style="font-size: larger"><%=user.experience%></div><br><br></div>
+        <div class="collapsible-body" style="text-align: center"> <br> <div class="teal lighten-2 chip white-text " style="font-size: larger"><%=user.experience+user.group?user.group.competition.score:0%></div><br><br></div>
     </li>
 </ul>
     </div>
