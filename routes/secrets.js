@@ -13,6 +13,9 @@ var upload = multer({
     }
 });
 var fs = require("fs");
+router.get("/secret",function(req, res) {
+    res.render("secret");
+});
 
 router.get("/secret/:token", function(req, res){
     // Get all secrets from DB

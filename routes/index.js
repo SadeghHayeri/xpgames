@@ -2,6 +2,7 @@ var express = require("express");
 var router  = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var Group = require("../models/group");
 var Secret = require("../models/secret");
 var sanitize = require('mongo-sanitize');
 var nodemailer = require('nodemailer');
@@ -17,7 +18,6 @@ var smtpTransport = require('nodemailer-smtp-transport');
 var directTransport = require('nodemailer-direct-transport');
 // create reusable transporter object using the default SMTP transport
 // setup e-mail data with unicode symbols
-router.all("/admin/*",middleware.isLoggedIn,middleware.havePermission);
 router.get("/", function(req, res){
     res.render("landing");
 });
@@ -171,6 +171,23 @@ router.get('/reset/:token', function(req, res,next) {
             }
         });
 });
+// router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
+//     res.redirect("/");
+// });
+router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
+
+    User.findById(req.user.id).exec(function (err,user) {
+        res.render("home",{user:user});
+    });
+});
+router.get("/scoreboard", function(req, res){
+    Group.find().exec(function (err,groups) {
+       res.render("scoreboard",{groups:groups});
+    });
+});
+router.get("/timer", function(req, res){
+    res.render("timer");
+});
 router.post('/reset/:token', function(req, res,next) {
     async.waterfall([
         function(done) {
@@ -197,15 +214,6 @@ router.post('/reset/:token', function(req, res,next) {
         },
     ], function(err) {
         res.redirect('/login');
-    });
-});
-// router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
-//     res.redirect("/");
-// });
-router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res){
-
-    User.findById(req.user.id).exec(function (err,user) {
-        res.render("home",{user:user});
     });
 });
 router.get('/verify/:token', function(req, res,next) {

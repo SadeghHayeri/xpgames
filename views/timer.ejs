@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>XP Games</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <style>
+        @font-face {
+            font-family: IRANSansWeb;
+            src: url(../../font/IRANSansWeb.ttf);
+        }
+        body{
+            font-family: IRANSansWeb;
+        }
+        h1{
+            color: #396;
+            font-weight: 100;
+            font-size: 100px;
+            margin: 40px 0px 20px;
+        }
+
+        #clockdiv{
+            padding-top: 20px;
+            font-family: sans-serif;
+            color: #fff;
+            display: inline-block;
+            font-weight: 100;
+            text-align: center;
+            font-size: 200px;
+        }
+
+        #clockdiv > div{
+            padding: 10px;
+            border-radius: 3px;
+            background: rgba(1,162,166,1);;
+            display: inline-block;
+        }
+
+        #clockdiv div > span{
+            padding: 15px;
+            border-radius: 3px;
+            background: rgba(1,162,166,1);
+            display: inline-block;
+        }
+
+        .smalltext{
+            padding-top: 5px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body >
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+        <a id="logo-container" href="/" class="brand-logo center" style="text-align: center; color:white; font-family: Roboto;">XP Games</a>
+        <%if(!currentUser){%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/login">ورود</a></li>
+        </ul>
+        <%}else{%>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="#"><%=currentUser.name%></a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/logout">خروج</a></li>
+        </ul>
+        <%}%>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<br>
+<div class="card center" style="max-width: 90%; margin-left: 80px">
+<div id="clockdiv">
+    <div>
+        <span class="hours"></span>
+        <div class="smalltext">Hours</div>
+    </div>
+    <div>
+        <span class="minutes"></span>
+        <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+        <span class="seconds"></span>
+        <div class="smalltext">Seconds</div>
+    </div>
+</div>
+    </div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            function getTimeRemaining(endtime) {
+                var t = Date.parse(endtime) - Date.parse(new Date());
+                var seconds = Math.floor((t / 1000) % 60);
+                var minutes = Math.floor((t / 1000 / 60) % 60);
+                var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                return {
+                    'total': t,
+                    'days': days,
+                    'hours': hours,
+                    'minutes': minutes,
+                    'seconds': seconds
+                };
+            }
+
+            function initializeClock(id, endtime) {
+                var clock = document.getElementById(id);
+                var hoursSpan = clock.querySelector('.hours');
+                var minutesSpan = clock.querySelector('.minutes');
+                var secondsSpan = clock.querySelector('.seconds');
+
+                function updateClock() {
+                    var t = getTimeRemaining(endtime);
+
+                    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                    if (t.total <= 0) {
+                        clearInterval(timeinterval);
+                    }
+                }
+
+                updateClock();
+                var timeinterval = setInterval(updateClock, 1000);
+            }
+
+            var deadline = new Date(Date.parse(new Date()) + 10 * 60 * 1000);
+            initializeClock('clockdiv', deadline);
+        });
+    </script>
+</body>
+</html>

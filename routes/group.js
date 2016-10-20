@@ -51,6 +51,12 @@ router.post("/groups/:groupId/addUser", function(req, res){
     });
 });
 
+router.post("/groups/:groupId/addScore", function(req, res){
+    Group.findById(req.params.groupId,function (err,group) {
+        res.redirect('/admin/groups/'+group._id);
+    });
+});
+
 router.get("/groups/:groupId", function(req, res){
     Group.findById(req.params.groupId).deepPopulate(['members','competition.puzzles','competition.puzzles.problem'])
         .exec(function (err,group) {

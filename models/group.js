@@ -7,6 +7,7 @@ var GroupSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
+    xp:{type:Number,default:0},
     competition:{
         stage:{type:Number,default:0},
         score:{type:Number,default:0},

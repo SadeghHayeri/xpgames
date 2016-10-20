@@ -46,30 +46,46 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div class="card  dark-blue accent-3" style="width: 500px; position: relative;top: 15%;left: 32%; ">
-<ul class="collapsible popout" data-collapsible="accordion" style="text-align: right;">
-    <li>
-        <div class="collapsible-header"><i  class="material-icons">assignment_ind</i>نام و نام خانوادگی</div>
-        <div class="collapsible-body"><p><%=user.name%></p></div>
-
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="material-icons">email</i>ایمیل</div>
-        <div class="collapsible-body" style="text-align: left"><p><%=user.email%></p></div>
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="material-icons">info</i>شماره دانشجویی</div>
-        <div class="collapsible-body" style="text-align: left"><p><%=user.studentId%></p></div>
-    </li>
-    <li>
-        <div class="collapsible-header" style="text-align: left"><i class="material-icons">code</i>XP</div>
-        <div class="collapsible-body" style="text-align: center"> <br> <div class="teal lighten-2 chip white-text " style="font-size: larger"><%=user.experience%></div><br><br></div>
-    </li>
-</ul>
-    </div>
-
-
-
+<br>
+<br>
+<div class="card container" align="center" style="max-width: 50%;position: relative;left: 25%; width: auto;height: auto; ">
+    <table class="table-responsive  bordered striped">
+        <thead>
+            <tr>
+                <th scope="col" style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s2 center-align">
+                    رتبه
+                </th>
+                <th scope="col" style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s6 center-align">
+                    نام تیم
+                </th>
+                <th scope="col"  class="col s4 center-align">
+                    امتیاز
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <%groups.forEach(function (group,index) {%>
+            <td style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s2 center-align"><%=index+1%></td>
+            <td style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s6 center-align"><%=group.name%></td>
+            <td style="" class="col s4 center-align"><%=group.competition.score%></td>
+        <%})%>
+        </tbody>
+    </table>
+    <!--<ul class="col collection with-header">-->
+        <!--<div class="col s6">-->
+        <!--<li class="collection-header"><h4>رده بندی</h4></li>-->
+        <!--<%groups.forEach(function (group,index) {%>-->
+        <!--<li class="collection-item" style="font-size: xx-large"><span style="text-align: left" class="waves"> <%=index+1%>:</span> <%=group.name%><%=group.competition.score%></li>-->
+        <!--<%})%>-->
+        <!--</div>-->
+        <!--<div class="col s6">-->
+            <!--<li class="collection-header"><h4>رده بندی</h4></li>-->
+            <!--<%groups.forEach(function (group,index) {%>-->
+            <!--<li class="collection-item" style="font-size: xx-large"><span style="text-align: left" class="waves"> <%=index+1%>:</span> <%=group.name%><%=group.competition.score%></li>-->
+            <!--<%})%>-->
+        <!--</div>-->
+    <!--</ul>-->
+</div>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
