@@ -63,13 +63,16 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+
         <%groups.forEach(function (group,index) {%>
+        <thead>
             <td style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s2 center-align"><%=index+1%></td>
             <td style="border-right: solid thick rgba(65, 69, 116, 0.28);" class="col s6 center-align"><%=group.name%></td>
             <td style="" class="col s4 center-align"><%=group.competition.score%></td>
+        </thead>
         <%})%>
-        </tbody>
+
+
     </table>
     <!--<ul class="col collection with-header">-->
         <!--<div class="col s6">-->

@@ -182,7 +182,7 @@ router.get("/home",middleware.isLoggedIn,middleware.verified, function(req, res)
     });
 });
 router.get("/scoreboard", function(req, res){
-    Group.find().exec(function (err,groups) {
+    Group.find().sort("-competition.score").exec(function (err,groups) {
        res.render("scoreboard",{groups:groups});
     });
 });
