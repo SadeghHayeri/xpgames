@@ -17,6 +17,10 @@ module.exports = {
         if(req.isAuthenticated()){
             return next();
         }
+        req.session.redirectTo = req.url;
+        req.session.reqBody = req.body;
+        // console.log(req.body);
+        // console.log(req.method);
         req.flash("error", "You must be signed in to do that!");
         res.redirect("/login");
     },

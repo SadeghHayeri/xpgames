@@ -81,13 +81,16 @@ router.post('/login', function(req, res, next) {
         if(true)
         {
             passport.authenticate('local', function(err, user, info) {
+                console.log(req.session.redirectTo);
                 if (err) return next(err);
                 if (!user) {
                     return res.redirect('/login')
                 }
                 req.logIn(user, function(err) {
                     if (err) return next(err);
-                    return res.redirect('/home');
+                    var redirectTo = req.session.redirectTo;
+                    req.session.redirectTo = null;
+                    return res.redirect(redirectTo?redirectTo:'/home');
                 });
             })(req, res, next);
         }else{
@@ -95,6 +98,7 @@ router.post('/login', function(req, res, next) {
         }
     });
 });
+
 // logout route
 router.get("/logout", function(req, res){
     req.logout();
@@ -186,8 +190,8 @@ router.get("/scoreboard", function(req, res){
        res.render("scoreboard",{groups:groups});
     });
 });
-router.get("/timer", function(req, res){
-    res.render("timer");
+router.get("/timer",middleware.isLoggedIn, function(req, res){
+    res.render("test");
 });
 router.get("/cast", function(req, res){
     res.render("cast");

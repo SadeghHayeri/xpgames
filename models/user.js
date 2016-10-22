@@ -30,6 +30,7 @@ var UserSchema = new mongoose.Schema({
         default: '',
         validate: [validateLocalStrategyProperty, 'Please fill in your first name']
     },
+    color:String,
     username: String,
     password: String,
     groupname:String,

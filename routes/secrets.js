@@ -39,8 +39,11 @@ router.post("/secret/:secret_id", function(req, res){
         if (err) {
             console.log(err);
         } else {
-            if(secret.verify(A,C,M))
+            if(secret.verify(A,C,M)) {
+                req.user.color = secret.name;
+                req.user.save();
                 res.render("secret");
+            }
             else
                 res.redirect("/secret/"+secret.token);
         }

@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <title>XP Games</title>
@@ -10,6 +13,8 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="sweetalert-master/dist/sweetalert.css">
     <style>
         @font-face {
             font-family: IRANSansWeb;
@@ -19,15 +24,17 @@
             font-family: IRANSansWeb;
         }
     </style>
-</head>
-<body style="text-align: center; ; background-size: cover;; color: white"  >
-<nav role="navigation" style="background-color: #342f4f; ">
-    <div class="nav-wrapper container " >
-        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white;
-        position: relative;">ACM</a>
+<body class="loaded">
+<nav role="navigation" style="background-color: rgba(1,162,166,1);">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
+        <a id="logo-container" href="/" class="brand-logo center" style="text-align: center; color:white; font-family: Roboto;">XP Games</a>
         <%if(!currentUser){%>
         <ul class="right hide-on-med-and-down">
             <li><a style="color:white;" href="/register">ثبت نام</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a style="color:white;" href="/login">ورود</a></li>
         </ul>
         <%}else{%>
         <ul class="right hide-on-med-and-down">
@@ -37,48 +44,113 @@
             <li><a style="color:white;" href="/logout">خروج</a></li>
         </ul>
         <%}%>
-        <ul id="nav-mobile" class="side-nav " style="background-color: #342f4f;">
-            <%if(!currentUser){%>
-                <li><a style="font-size: x-large; color:white; text-align: right" href="/register">ثبت نام</a></li>
-                <li><a style="font-size: x-large; color:white; text-align: right" href="/login">ورود</a></li>
-            <%}else{%>
-                <li><a style="font-size: x-large; color:white; text-align: right" href="/home"><%=currentUser.name%></a></li>
-                <li><a style="font-size: x-large; color:white; text-align: right" href="/logout">خروج</a></li>
-            <%}%>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Navbar Link</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div class="row">
-    <div class="card" style="border-style: solid;border-width: 5px; border-radius: 10px; border-color: #342f4f; background-color: <%=secret.value%>;width: 60%; position: relative;top: 25%;left: 19%;">
-        <label style="font-size: xx-large;color: white">TO BE:</label>
-        <form id="formValidate"  action="/secret/<%=secret._id%>" method="post">
-            <div class="row">
-                <div class="input-field col s12" >
-                    <input  style="font-size: x-large" name="A" value="A" type="text" >
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12" >
-                    <input  style="font-size: x-large" value="C" name="C"  type="text" >
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12" >
-                    <input  style="font-size: x-large" name="M" value="M" type="text" >
-                </div>
-            </div>
-            <button class="btn " type="submit" name="action" style="background-color: #342f4f;">  ارسال جواب
-            <i class="material-icons right"></i>
-            </button>
-            <br>
-            <br>
-        </form>
-    </div>
+<!-- Start Page Loading -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
 </div>
+<!-- End Page Loading -->
+
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- START MAIN -->
+<div id="main">
+    <!-- START WRAPPER -->
+    <ul class="collapsible popout" data-collapsible="accordion" style="text-align: right;">
+        <li>
+            <div class="collapsible-header"><i  class="material-icons">assignment_ind</i>نام و نام خانوادگی</div>
+            <div class="collapsible-body"><p>یشسیشسی</p></div>
+
+        </li>
+    </ul>
+    <div class="wrapper">
+
+        <!-- START CONTENT -->
+        <section id="content">
+
+            <!--start container-->
+            <div class="container">
+                <div class="section">
+                    <h1 style="text-align: center;font-size: xx-large">بچه هایی که زحمت کشیدن تا این برنامه به سرانجام برسه</h1>
+                    <!-- //////////////////////////////////////////////////////////////////////////// -->
+                    <div class="divider"></div>
+                    <!--card widgets start-->
+                    <div id="card-widgets" class="seaction">
+                        <div class="row">
+                                    <div class="col s12 m4 l4" style="width: 20%">
+                                <div id="profile-card" class="card" >
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                        <!--<img src="nav.JPG" alt="" class="circle responsive-img activator card-profile-image">-->
+                                        <img class="activator" src="nav.JPG" alt="user bg">
+                                        <!--<img class="activator" src="UT.png" alt="user bg">-->
+                                    </div>
+                                    <div class="card-content" style="text-align: right">
+                                        <!--<img src="nav.JPG" alt="" class="circle responsive-img activator card-profile-image">-->
+                                        <span class="card-title activator grey-text text-darken-4">زین‌العابدین نوابی</span>
+                                        <p><i class="mdi-action-perm-identity"></i> طراحی دکور</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                                    <div class="col s12 m4 l4" style="width: 20%">
+                                        <div id="profile-card" class="card" >
+                                            <div class="card-image waves-effect waves-block waves-light">
+                                                <!--<img src="nav.JPG" alt="" class="circle responsive-img activator card-profile-image">-->
+                                                <img class="activator" src="nav.JPG" alt="user bg">
+                                                <!--<img class="activator" src="UT.png" alt="user bg">-->
+                                            </div>
+                                            <div class="card-content" style="text-align: right">
+                                                <!--<img src="nav.JPG" alt="" class="circle responsive-img activator card-profile-image">-->
+                                                <span class="card-title activator grey-text text-darken-4">زین‌العابدین نوابی</span>
+                                                <p><i class="mdi-action-perm-identity"></i> طراحی دکور</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        </div>
+                    </div>
+                    <!--card widgets end-->
+
+                </div>
+            </div>
+            <!--end container-->
+
+        </section>
+        <!-- END CONTENT -->
+    </div>
+    <!-- END WRAPPER -->
+
+</div>
+<!-- END MAIN -->
+
+<!-- jQuery Library -->
+<!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.collapsible').collapsible({
+            accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        swal({   title: "Error!",   text: "Here's my error message!",   type: "error",   confirmButtonText: "Cool" });
+        $('.collapsible').collapsible({
+            accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+    });
+</script>
 
-</body>
-</html>
+<div class="hiddendiv common"></div><div class="drag-target" style="left: 0px; -webkit-user-drag: none;"></div><div class="drag-target" style="right: 0px; -webkit-user-drag: none;"></div></body></html>
