@@ -18,19 +18,19 @@ router.get("/secret",function(req, res) {
     res.render("secret");
 });
 
-router.get("/secret/:token", function(req, res){
+router.get("/secret/:token", middleware.isLoggedIn,function(req, res){
     // Get all secrets from DB
     Secret.findOne({token:req.params.token}, function(err, secret) {
         if (err) {
             console.log(err);
         } else {
             // console.log(secret);
-            res.render("secret",{secret: secret});
+            res.render("test",{seccrret:secret});
         }
     });
 });
 
-router.post("/secret/:secret_id",middleware.isLoggedIn, function(req, res){
+router.post("/secret/:secret_id", function(req, res){
     // Get all secrets from DB
     Secret.findById(req.params.secret_id, function(err, secret) {
         var A = req.body.A;
@@ -42,7 +42,7 @@ router.post("/secret/:secret_id",middleware.isLoggedIn, function(req, res){
             if(secret.verify(A,C,M)) {
                 req.user.color = secret.name;
                 req.user.save();
-                res.render("secret",{secret:secret});
+                res.render("secret");
             }
             else
                 res.redirect("/secret/"+secret.token);

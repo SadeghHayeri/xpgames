@@ -19,7 +19,7 @@ var directTransport = require('nodemailer-direct-transport');
 // create reusable transporter object using the default SMTP transport
 // setup e-mail data with unicode symbols
 router.get("/", function(req, res){
-    res.render("test");
+    res.render("landing");
 });
 
 // show register form
