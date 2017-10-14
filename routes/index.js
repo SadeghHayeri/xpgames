@@ -27,7 +27,7 @@ router.get("/register", function(req, res){
     res.render("register");
 });
 router.post('/register',function(req, res,next) {
-    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6LdPnQgUAAAAAFdvxzaLnLu9_CsJEXTAmHg2YeG8' +"&response=" +req.body['g-recaptcha-response'];
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret="+ '6Le-aTQUAAAAABDNSUxz72B-qDaX7HnzJi6u06Qk' +"&response=" +req.body['g-recaptcha-response'];
     request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
         var username = sanitize(req.body.email);
