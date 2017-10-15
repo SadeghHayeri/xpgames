@@ -38,9 +38,9 @@ module.exports = {
             if (!req.user.verifyToken) {
                 var verifyToken = makeSecret(24);
                 var transporter = nodemailer.createTransport({
-                    service: 'Gmail',
+                    service: 'Yahoo',
                     auth: {
-                        user: "utacmchapter@gmail.com",
+                        user: "utacm.chapter@yahoo.com",
                         pass: "acmGoOo([oO]*])GoOoriii"
                     }
                 });
