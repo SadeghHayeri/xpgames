@@ -45,7 +45,7 @@ module.exports = {
                     }
                 });
                 var mailOptions = {
-                    from: '"UT ACM" <ut.acm.chapter@gmail.com>', // sender address
+                    from: '"UT ACM" <utacm.chapter@yahoo.com>', // sender address
                     to: req.user.email, // list of receivers
                     subject: 'ACM :: Register Verification', // Subject line
                     text: ' ', // plaintext body
