@@ -2,277 +2,359 @@
 <html lang="en">
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XP Games</title>
+    	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>XP GAME</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
 
-    <!-- CSS  -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $(window).resize(function() {
-            var mobileWidth =  (window.innerWidth > 0) ?
-                    window.innerWidth :
-                    screen.width;
-            var viewport = (mobileWidth > 360) ?
-                    'width=device-width, initial-scale=1.0' :
-                    'width=1200';
-            $("meta[name=viewport]").attr('content', viewport);
-        }).resize();
-    </script>
-    <style>
-        @font-face {
-            font-family: IRANSansWeb;
-            src: url(../../font/IRANSansWeb.ttf);
-        }
-        body{
-            font-family: IRANSansWeb;
-            background-color: rgba(1,162,166,1);
-            /*overflow-x: hidden;*/
-        }
-    </style>
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" href="css/style1.css">
+
+	<!-- Styleswitcher ( This style is for demo purposes only, you may delete this anytime. ) -->
+	<link rel="stylesheet" id="theme-switch" href="css/style.css">
+	<!-- End demo purposes only -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+ 
+
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
-<nav role="navigation" style="background-color: rgba(1,162,166,1);">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="http://acm.ut.ac.ir" class="brand-logo" style="color:white; font-family: Roboto;">ACM</a>
-        <%if(!currentUser){%>
-        <a href="/" class="brand-logo center white-text">XP Games</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/register">ثبت نام</a></li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
-            <li><a style="color:white;" href="/login">ورود</a></li>
-        </ul>
-        <%}else{if(!currentUser.verified){%>
-        <a href="#" class="brand-logo center white-text">لطفا ایمیلت رو تایید کن</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a id="user" style="color:white;" onmouseover="" class="tooltipped" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن" href="/home"><%=currentUser.name%></a></li>
-            </ul>
-        <%}else {%>
-        <a href="/home" class="brand-logo center white-text">XP Games</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a id="user" style="color:white;"  data-delay="50" data-tooltip="به زودی این بخش فعال میشه" href="/home"><%=currentUser.name%></a></li>
-            </ul>
-        <%}%>
-            <ul class="right hide-on-med-and-down">
-                <li><a style="color:white;" href="/logout">خروج</a></li>
-            </ul>
-        <%}%>
-        <ul id="nav-mobile" class="side-nav">
-            <%if(!currentUser){%>
-                <li><a style="color:white;" href="/register">ثبت نام</a></li>
-                <li><a style="color:white;" href="/login">ورود</a></li>
-            <%}else{if(!currentUser.verified){%>
-                <li><a id="user" style="color:white;" onmouseover="" class="tooltipped" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن" href="/home"><%=currentUser.name%></a></li>
+ 
 
-            <%}else {%>
-                <li><a id="user" style="color:white;"  data-delay="50" data-tooltip="به زودی این بخش فعال میشه" href="/home"><%=currentUser.name%></a></li>
-            <%}%>
-                <li><a style="color:white;" href="/logout">خروج</a></li>
+	<header role="banner" id="fh5co-header">
+			<div class="container">
+				<!-- <div class="row"> -->
+			    <nav class="navbar navbar-default">
+		        <div class="navbar-header">
+		        	<!-- Mobile Toggle Menu Button -->
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		         <a class="navbar-brand">XP Game</a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="active"><a href="#" data-nav-section="home"><span>خانه</span></a></li>
+		            <li><a href="#" data-nav-section="work"><span>تصاویر</span></a></li>
+		            <li><a href="#" data-nav-section="testimonials"><span>از نگاه سال بالایی‌ها</span></a></li>
+			        <%if(!currentUser){%>
+				 	<li><a href="/register" ><span>ثبت نام</span></a></li>
+				<%}else{if(!currentUser.verified){%>
+					<li><a id="user"   onmouseover="" class="tooltipped" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن" href="/home"><span><%=currentUser.name%></span></a></li>	
+		            <li><a href="#"  ><span>لطفا ایمیلت رو تایید کن</span></a></li>
+				<%}else {%>
+			                <li><a id="user"   onmouseover=""  data-delay="50" data-tooltip="به زودی این بخش فعال میشه" href="/home"><span><%=currentUser.name%></span></a></li>
+				<%}%>	
+			                <li><a   onmouseover=""  href="/logout"><span>خروج</span></a></li>			
+				<%}%>
+		          </ul>
+		        </div>
+			    </nav>
+			  <!-- </div> -->
+		  </div>
+	</header>
 
-            <%}%>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+	<section id="fh5co-home" data-section="home" style="background-image: url(images/full_image_2.jpg);" data-stellar-background-ratio="0.5">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="text-wrap">
+				<div class="text-inner">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<img src="images/topimg.png" width="350px"/>
+							<h1 class="to-animate">یه روز با کلی برنامه‌های هیجان انگیز</h1>
+							<h2 class="to-animate">جمعه ۲۸ مهرماه</h2>
+							<h2 class="to-animate">ساعت ۹تا۱۷</h2>
 
-<div id="index-banner" class="parallax-container mainhead">
-    <div class="heading">
-        <div class="section no-pad-bot">
-            <!--<div style="position: absolute"><img src="background3.jpg" alt="Unsplashed background img 1"></div>-->
-            <div class="container">
-                <!--<br><br>-->
-                <!--<br><br>-->
-                <div class="headname">
-                    <h1 class=" header center teal-text text-lighten-2" style="
-    margin-top: 10%;
-">
-                        <span class="accent-3 Hedear" style="color: white;font-size: 45px;border-radius: 28%;border: none; "> <span style="text-align: left; font-family: Roboto">XP GAMES</span>  خوش آمدید به</span>
-                    </h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slant"></div>
+	</section>
+
+	<section id="fh5co-intro" >
+		<div class="container">
+            <div class="row row-bottom-padded-lg">
+                <div class="fh5co-block to-animate" style="background-image: url(images/img_7.jpg); height:350px;">
+                    <div class="overlay-darker"></div>
+                    <div class="overlay"></div>
+                    <div class="fh5co-text">
+						<i class="material-icons fh5co-intro-icon" Style="font-size:100px;">forum</i>        
+                <h2>گپ با سال بالایی ها</h2>
+                        <p>میتونی با سال بالایی ها آشنا بشی و از تجربیاتشون استفاده کنی و درباره دانشگاه بیشتر بدونی
+</p>
+                    </div>
+                </div>
+                <div class="fh5co-block to-animate" style="background-image: url(images/img_8.jpg);height:350px;">
+                    <div class="overlay-darker"></div>
+                    <div class="overlay"></div>
+                    <div class="fh5co-text">
+<i class="material-icons  fh5co-intro-icon" Style="font-size:100px;">info_outline</i>
+                        <h2>آشنایی با ‌ACM</h2>
+                        <p>میخوای بدونی ای سی ام چیه. </p>
+                    </div>
+                </div>
+                <div class="fh5co-block to-animate" style="background-image: url(images/img_10.jpg);height:350px;">
+                    <div class="overlay-darker"></div>
+                    <div class="overlay"></div>
+                    <div class="fh5co-text">
+						<i class="material-icons fh5co-intro-icon" Style="font-size:100px;">videogame_asset</i>
+                        <h2>مسابقه</h2>
+                        <p>یه مسابقه خفن و دورهمی :) که خیلی خوش میگذره تازه اگه برنده بشی جایزه هم میگیرین :)</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+			 
+		</div>
+	</section>
 
-</div>
+	<section id="fh5co-work" data-section="work">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">تصاویر</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 subtext to-animate">
+							<h3>تصاویر از دوره‌ی پیشین مسابقه</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row row-bottom-padded-sm">
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_1.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_1.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_2.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_2.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
 
-<div class="container xpcontainer">
-    <div class="section">
+				<div class="clearfix visible-sm-block"></div>
 
-        <div class="row">
-            <div class="col s12 center">
-                <h3><i class="mdi-content-send brown-text"></i></h3>
-                <h4 style="color: white;font-size: 50px;font-family: Roboto;">XP Games</h4>
-                <p class="center-align light" style="color: white">
-                    جمعه ۲۹ مهر
-                    <br>
-                    یه روز با کلی برنامه‌های مهیج
-                    <br>
-                    که سال بالایی‌ها برای خوش آمدگویی بهت تدارک دادن
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_3.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_3.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_4.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_4.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				
+				<div class="clearfix visible-sm-block"></div>
 
-                    <br>
-                    هم می‌تونی با دانشکده و هم با بچه‌ها بیشتر آشنا بشی
-                    زمانبندی
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_5.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_5.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_6.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_6.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				
+				<div class="clearfix visible-sm-block"></div>
 
-                </p>
-                <div class="row center">
-                    <a href="Time-Table.pdf" id="download-button" class="btn-large waves-effect waves-light accent-3" style="background-color: rgba(41,217,194,1);">زمانبندی</a>
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_7.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_7.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_8.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_8.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+
+				<div class="clearfix visible-sm-block"></div>
+
+				<div class="col-md-4 col-sm-6 col-xxs-12">
+					<a href="images/work_1.jpg" class="fh5co-project-item image-popup to-animate">
+						<img src="images/work_1.jpg" alt="Image" class="img-responsive">
+ 
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-testimonials" data-section="testimonials">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">از نگاه سال بالایی‌ها</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="box-testimony">
+						<blockquote class="to-animate-2">
+							<p style="text-align:justify;">&ldquo;این برنامه فرصت خوبیه که بتونین همدیگه رو بهتر بشناسین و با شرکت توی مسابقات تیمی با مفاهیم اولیه‌ی مهندسی کامپیوتر آشنا بشین.&rdquo;</p>
+						</blockquote>
+						<div class="author to-animate">
+							<figure><img src="images/person1.jpg" alt="Person"></figure>
+							<p>
+							 علی شیراوند  <span class="subtext">از اعضای دوره نیلی ACM</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="box-testimony">
+						<blockquote class="to-animate-2">
+							<p style="text-align:justify;">&ldquo;کنار هم قرار گرفتن، تجربیات دانشجویان سال‌های بالاتر و انرژی ورودی‌های جدید همیشه باعث جذاب شدن این مسابقه می‌شود. مسابقه‌ای که با الهام از دانشگاه‌های خارجی دانشجویان را با مفاهیم مدیریت ریسک و پروژه آشنا می‌کند&rdquo;</p>
+						</blockquote>
+                        <div class="author to-animate">
+                            <figure><img src="images/person1.jpg" alt="Person"></figure>
+                            <p>
+  امیررضا دادفرنیا  <span class="subtext">رئیس دو دوره‌ی قبل</span>
+                            </p>
+                        </div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+                    <div class="box-testimony">
+                        <blockquote class="to-animate-2">
+                            <p style="text-align:justify;">&ldquo;ایکس پی گیم در کنار هیجان و جذابیتی که داره، بهترین آموزش دهنده یکی از مهم‌ترین موضوعات مهندسی کامپیوتره.&rdquo;</p>
+                        </blockquote>
+                        <div class="author to-animate">
+                            <figure><img src="images/person1.jpg" alt="Person"></figure>
+                            <p>
+                                امیر ‌حسین صیحانی  <span class="subtext">از اعضای دوره نیلی ACM</span>
+                            </p>
+                        </div>
+                    </div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<footer id="footer" role="contentinfo">
+		<a href="#" class="gotop js-gotop"><i class="icon-arrow-up2"></i></a>
+		<div class="container">
+            <br/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="social social-circle">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="material-icons">near_me</i></a></li>
+
+                    </ul>
                 </div>
             </div>
-        </div>
+			<div class="">
+				<div class="col-md-12 text-center">
+                    <p><br>طراحی و پیاده‌سازی توسط<a href="https://www.linkedin.com/in/ghazal-sahebjam-323621112/"> غزل صاحب جمع</a> </p>
+					
+				</div>
+			</div>
+<!-- <div class=""> -->
+				<!-- <div class="col-md-12 text-center"> -->
+                    <!-- <p><br> پیاده‌سازی توسط<a href="https://www.linkedin.com/in/ghazal-sahebjam-323621112/">ermia hasanpour</a> </p> -->
+					
+				<!-- </div> -->
+			<!-- </div> -->
 
-    </div>
-</div>
+		<!-- </div> -->
+	</footer>
 
-<!--<div id="index-banner" class="parallax-container">-->
-<!--<div class="section no-pad-bot">-->
-<!--<div class="container">-->
-<!--<br><br>-->
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Counter -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
 
-<!--<br><br>-->
+	<!-- For demo purposes only styleswitcher ( You may delete this anytime ) -->
+	<script src="js/jquery.style.switcher.js"></script>
+	<script>
+		$(function(){
+			$('#colour-variations ul').styleSwitcher({
+				defaultThemeId: 'theme-switch',
+				hasPreview: false,
+				cookie: {
+		          	expires: 30,
+		          	isManagingLoad: true
+		      	}
+			});	
+			$('.option-toggle').click(function() {
+				$('#colour-variations').toggleClass('sleep');
+			});
+		});
+	</script>
+	<!-- End demo purposes only -->
 
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash;<div class="parallax"><img src="acmback.png" alt="Unsplashed background img 1"></div>&ndash;&gt;-->
-<!--</div>-->
-
-<div class="container" style="width: 100%;">
-    <div class="section">
-
-        <!--   Icon Section   -->
-        <div class="row">
-
-        </div>
-
-    </div>
-</div>
-
-<div id="index-banner" class="parallax-container mainhead setback2">
-    <div class="section no-pad-bot heading">
-        <div class="container">
-            <br><br>
-
-            <h1 class=" header center teal-text text-lighten-2">
-                <span class="accent-3" style="color:white;">بازی کن و برنده شو</span>
-            </h1>
-
-            <br><br>
-
-        </div>
-    </div>
-    <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>
-</div>
-<div class="row">
-    <div class="col s12 m4 designComponent">
-        <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">XP Game</h5>
-
-            <p class="light">یه مسابقه خفن و دورهمی :) که خیلی خوش میگذره تازه اگه برنده بشی جایزه هم میگیرین :)</p>
-        </div>
-    </div>
-    <div class="col s12 m4 designComponent">
-        <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">آشنایی با ای سی ام</h5>
-
-            <p class="light">
-                <br>میخوای بدونی ای سی ام چیه.
-                <br>
-            </p>
-        </div>
-    </div>
-    <div class="col s12 m4 designComponent">
-        <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">گپ با سال بالایی ها</h5>
-
-            <p class="light">میتونی با سال بالایی ها آشنا بشی و از تجربیاتشون استفاده کنی و درباره دانشگاه بیشتر بدونی </p>
-        </div>
-    </div>
-</div>
-<!--<div class="container" style="background-color: #bc314a;border: 5%;border-radius: 10%;box-shadow: -1px -1px 19px #1e474e;">-->
-<!--<div class="section">-->
-
-<!--<div class="row">-->
-<!--<div class="col s12 center" style="color: white;">-->
-<!--<h3><i class="mdi-content-send brown-text"></i></h3>-->
-<!--<h4>Contact Us</h4>-->
-<!--<p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-
-<div id="index-banner" class="parallax-container mainhead setback3">
-    <div class="section no-pad-bot heading" style="background: linear-gradient(to top, rgba(255,0,0,0), rgba(0, 0, 0, 0.9));">
-        <div class="container" style="position: relative; margin-top: 9.3%;">
-            <br><br>
-            <h1 class=" header center teal-text text-lighten-2" >
-                <span class="accent-3" style="color: white; font-size:55px;" > با دانشگاه و آدمای اون بیشتر آشنا شو</span>
-            </h1>
-
-
-            <br><br>
-
-        </div>
-    </div>
-    <!--<div class="parallax"><img src="background2.jpg" alt="Unsplashed background img 1"></div>-->
-</div>
-
-
-<footer class="page-footer accent-3" style="background-color: rgba(1,162,166,1);">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text" style="color: white">ACM </h5>
-                <p class="grey-text text-lighten-4">University of Tehran ACM Student Chapter</p>
-            </div>
-            <div class="col l3 s12">
-                <div class="icon-block">
-                    <a href="http://ut.ac.ir">
-                    <h2 class="center brown-text"><i class="small material-icons"><img src="UT.png" style="width: 100%; height:100%; position: relative"/></i></h2>
-                    <h5 class="center" style="color: white">UT</h5>
-                    </a>
-                </div>
-            </div>
-            <div class="col l3 s12">
-                <div class="icon-block">
-                    <a href="http://acm.ut.ac.ir">
-                        <h2 class="center brown-text"><i class="small material-icons"><img src="background4.png" style="width: 100%; height:100%; position: relative"/></i></h2>
-                        <h5 class="center" style="color: white">ACM</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright" style="background-color: rgba(188,49,74,1); text-align: right">
-        <!-- Dropdown Trigger -->
-        <a style="font-size: x-small; text-align: right" class='dropdown-button' href='#' data-activates='dropdown1'> طراحی و پیاده سازی</a>
-
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1'  class='dropdown-content' style="font-size: xx-small; text-align: right" >
-            <li><a style="font-size: xx-small; text-align: right" href="http://linkedin.com/in/hodakermani">هدی</a></li>
-            <li><a style="font-size: xx-small; text-align: right" href="mailto:mehrnaz348@gmail.com">mehrnaz.sa</a></li>
-            <li><a style="font-size: xx-small; text-align: right" href="mailto:aseyhani@icloud.com">Amir</a></li>
-        </ul>
-        <div class="container" style="font-size: xx-small; text-align: right"  >
-
-        </div>
-    </div>
-</footer>
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
 
 </body>
 </html>
