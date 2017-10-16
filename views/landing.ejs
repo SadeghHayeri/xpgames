@@ -77,15 +77,15 @@
 		            <li><a href="#" data-nav-section="work"><span>تصاویر</span></a></li>
 		            <li><a href="#" data-nav-section="testimonials"><span>از نگاه سال بالایی‌ها</span></a></li>
 			        <%if(!currentUser){%>
-				 	<li><a href="/register" > ثبت نام </a></li>
-				<%}else{if(!currentUser.verified){%>
-					<li><a id="user"   onmouseover="" class="tooltipped" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن" href="/home"><span><%=currentUser.name%></span></a></li>	
-		            <li><a href="#"  ><span>لطفا ایمیلت رو تایید کن</span></a></li>
-				<%}else {%>
-			                <li><a id="user"   onmouseover=""  data-delay="50" data-tooltip="به زودی این بخش فعال میشه" href="/home"><span><%=currentUser.name%></span></a></li>
-				<%}%>	
-			                <li><a   onmouseover=""  href="/logout"><span>خروج</span></a></li>			
-				<%}%>
+				 		 <a href="/register" > ثبت نام </a> 
+					<%}else{if(!currentUser.verified){%>
+						<li><a id="user"   onmouseover="" class="tooltipped" data-delay="50" data-tooltip="لطفا ایمیلت رو تایید کن" href="/home"><span><%=currentUser.name%></span></a></li>	
+			            <li><a href="#"  ><span>لطفا ایمیلت رو تایید کن</span></a></li>
+						<%}else {%>
+				                <li><a id="user"   onmouseover=""  data-delay="50" data-tooltip="به زودی این بخش فعال میشه" href="/home"><span><%=currentUser.name%></span></a></li>
+						<%}%>	
+			             <li><a   onmouseover=""  href="/logout"><span>خروج</span></a></li>			
+					<%}%>
 		          </ul>
 		        </div>
 			    </nav>
